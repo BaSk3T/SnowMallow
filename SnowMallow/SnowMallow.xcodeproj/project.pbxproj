@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */; };
+		BBAA2BC81C665CDF0065BDBD /* JumpRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */; };
 		BBADE0681C651F2E005BC959 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBADE0671C651F2E005BC959 /* main.m */; };
 		BBADE06B1C651F2E005BC959 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBADE06A1C651F2E005BC959 /* AppDelegate.m */; };
 		BBADE06E1C651F2E005BC959 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBADE06D1C651F2E005BC959 /* ViewController.m */; };
@@ -17,13 +19,18 @@
 		BBC3D61F1C6526FC0094A7E1 /* BSJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D61E1C6526FC0094A7E1 /* BSJoystick.m */; };
 		BBC3D6231C6540BC0094A7E1 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D6221C6540BC0094A7E1 /* Character.m */; };
 		BBC3D62A1C6549C30094A7E1 /* Default.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBC3D6261C6549C30094A7E1 /* Default.atlas */; };
-		BBC3D62B1C6549C30094A7E1 /* Jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBC3D6271C6549C30094A7E1 /* Jump.atlas */; };
 		BBC3D62C1C6549C30094A7E1 /* MoveLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBC3D6281C6549C30094A7E1 /* MoveLeft.atlas */; };
 		BBC3D62D1C6549C30094A7E1 /* MoveRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBC3D6291C6549C30094A7E1 /* MoveRight.atlas */; };
+		BBC3D63D1C6570D50094A7E1 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D63C1C6570D50094A7E1 /* Platform.m */; };
+		BBC3D6451C657E130094A7E1 /* ground-medium.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC3D6421C657E130094A7E1 /* ground-medium.png */; };
+		BBC3D6461C657E130094A7E1 /* ground-small.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC3D6431C657E130094A7E1 /* ground-small.png */; };
+		BBC3D6471C657E130094A7E1 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC3D6441C657E130094A7E1 /* ground.png */; };
 		BBEB9AB21C6521C500D0FA3E /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEB9AB11C6521C500D0FA3E /* SpriteKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpLeft.atlas; sourceTree = "<group>"; };
+		BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpRight.atlas; sourceTree = "<group>"; };
 		BBADE0631C651F2E005BC959 /* SnowMallow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowMallow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBADE0671C651F2E005BC959 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBADE0691C651F2E005BC959 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -41,9 +48,13 @@
 		BBC3D6211C6540BC0094A7E1 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		BBC3D6221C6540BC0094A7E1 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		BBC3D6261C6549C30094A7E1 /* Default.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Default.atlas; sourceTree = "<group>"; };
-		BBC3D6271C6549C30094A7E1 /* Jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Jump.atlas; sourceTree = "<group>"; };
 		BBC3D6281C6549C30094A7E1 /* MoveLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MoveLeft.atlas; sourceTree = "<group>"; };
 		BBC3D6291C6549C30094A7E1 /* MoveRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MoveRight.atlas; sourceTree = "<group>"; };
+		BBC3D63B1C6570D50094A7E1 /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
+		BBC3D63C1C6570D50094A7E1 /* Platform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Platform.m; sourceTree = "<group>"; };
+		BBC3D6421C657E130094A7E1 /* ground-medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ground-medium.png"; sourceTree = "<group>"; };
+		BBC3D6431C657E130094A7E1 /* ground-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ground-small.png"; sourceTree = "<group>"; };
+		BBC3D6441C657E130094A7E1 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 		BBEB9AB11C6521C500D0FA3E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -120,6 +131,8 @@
 				BBC3D61E1C6526FC0094A7E1 /* BSJoystick.m */,
 				BBC3D6211C6540BC0094A7E1 /* Character.h */,
 				BBC3D6221C6540BC0094A7E1 /* Character.m */,
+				BBC3D63B1C6570D50094A7E1 /* Platform.h */,
+				BBC3D63C1C6570D50094A7E1 /* Platform.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -127,6 +140,7 @@
 		BBC3D6201C6529F30094A7E1 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				BBC3D6351C65709A0094A7E1 /* Ground */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -142,12 +156,31 @@
 		BBC3D6251C6549C30094A7E1 /* CharacterAtlases */ = {
 			isa = PBXGroup;
 			children = (
+				BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */,
+				BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */,
 				BBC3D6261C6549C30094A7E1 /* Default.atlas */,
-				BBC3D6271C6549C30094A7E1 /* Jump.atlas */,
 				BBC3D6281C6549C30094A7E1 /* MoveLeft.atlas */,
 				BBC3D6291C6549C30094A7E1 /* MoveRight.atlas */,
 			);
 			path = CharacterAtlases;
+			sourceTree = "<group>";
+		};
+		BBC3D6351C65709A0094A7E1 /* Ground */ = {
+			isa = PBXGroup;
+			children = (
+				BBC3D6361C65709A0094A7E1 /* Level1 */,
+			);
+			path = Ground;
+			sourceTree = "<group>";
+		};
+		BBC3D6361C65709A0094A7E1 /* Level1 */ = {
+			isa = PBXGroup;
+			children = (
+				BBC3D6421C657E130094A7E1 /* ground-medium.png */,
+				BBC3D6431C657E130094A7E1 /* ground-small.png */,
+				BBC3D6441C657E130094A7E1 /* ground.png */,
+			);
+			path = Level1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,12 +240,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBAA2BC81C665CDF0065BDBD /* JumpRight.atlas in Resources */,
 				BBADE0761C651F2E005BC959 /* LaunchScreen.storyboard in Resources */,
+				BBC3D6451C657E130094A7E1 /* ground-medium.png in Resources */,
 				BBC3D62A1C6549C30094A7E1 /* Default.atlas in Resources */,
 				BBADE0731C651F2E005BC959 /* Assets.xcassets in Resources */,
+				BBC3D6471C657E130094A7E1 /* ground.png in Resources */,
+				BBC3D6461C657E130094A7E1 /* ground-small.png in Resources */,
+				BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */,
 				BBC3D62D1C6549C30094A7E1 /* MoveRight.atlas in Resources */,
 				BBC3D62C1C6549C30094A7E1 /* MoveLeft.atlas in Resources */,
-				BBC3D62B1C6549C30094A7E1 /* Jump.atlas in Resources */,
 				BBADE0711C651F2E005BC959 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,6 +263,7 @@
 			files = (
 				BBC3D61B1C65254B0094A7E1 /* Level1.m in Sources */,
 				BBADE06E1C651F2E005BC959 /* ViewController.m in Sources */,
+				BBC3D63D1C6570D50094A7E1 /* Platform.m in Sources */,
 				BBADE06B1C651F2E005BC959 /* AppDelegate.m in Sources */,
 				BBC3D61F1C6526FC0094A7E1 /* BSJoystick.m in Sources */,
 				BBADE0681C651F2E005BC959 /* main.m in Sources */,

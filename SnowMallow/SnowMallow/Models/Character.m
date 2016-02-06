@@ -11,10 +11,14 @@
 @interface Character()
 @property NSArray *moveLeftTextures;
 @property NSArray *moveRightTextures;
-@property NSArray *jumpTextures;
+@property NSArray *jumpLeftTextures;
+@property NSArray *jumpRightTextures;
 @end
 
 @implementation Character
+
+static const uint32_t characterCategory =  0x1 << 2;
+
 -(instancetype) initWithPosition:(CGPoint)position andScale:(CGFloat) scale {
     self = [super init];
     
@@ -33,9 +37,11 @@
         self.yScale = scale;
         
         // Setting physics
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height)];
-        self.physicsBody.mass = 1.0;
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height - self.size.height / 10)];
+        //self.physicsBody.mass = 1.0;
         self.physicsBody.dynamic = YES;
+        self.physicsBody.allowsRotation = NO;
+        self.physicsBody.categoryBitMask = characterCategory;
         
         // Load all actions
         [self loadActionsForCharacter];
@@ -44,16 +50,14 @@
     return self;
 }
 
--(void)jump {
-    [self.physicsBody applyImpulse:CGVectorMake(0, 500.0) atPoint:self.position];
-}
-
 -(void) loadActionsForCharacter {
-    self.animationJumpAction = [SKAction animateWithTextures:self.jumpTextures timePerFrame:0.1];
+    self.animationJumpLeftAction = [SKAction animateWithTextures:self.jumpLeftTextures timePerFrame:0.1];
+    self.animationJumpRightAction = [SKAction animateWithTextures:self.jumpRightTextures timePerFrame:0.1];
     self.animationMoveLeftAction = [SKAction animateWithTextures:self.moveLeftTextures timePerFrame:0.15];
     self.animationMoveRightAction = [SKAction animateWithTextures:self.moveRightTextures timePerFrame:0.15];
     self.moveLeftAction = [SKAction moveByX:-self.size.width / 6 y:0 duration:0.1];
     self.moveRightAction = [SKAction moveByX:self.size.width / 6 y:0 duration:0.1];
+    self.jumpAction = [SKAction moveByX:0 y:200 duration:0.5];
 }
 
 // Returns all the textures for given atlas into NSMutableArray
@@ -86,13 +90,15 @@
     
     self.moveLeftTextures = [self loadTexturesWithAtlasName:@"MoveLeft" andImagePrefix:@"move-left"];
     self.moveRightTextures = [self loadTexturesWithAtlasName:@"MoveRight" andImagePrefix:@"move-right"];
-    self.jumpTextures = [self loadTexturesWithAtlasName:@"Jump" andImagePrefix:@"jump"];
-    
-    NSLog(@"%ld %ld %ld", self.moveLeftTextures.count, self.moveRightTextures.count, self.jumpTextures.count);
-    NSLog(@"%ld", atlas.textureNames.count);
+    self.jumpLeftTextures = [self loadTexturesWithAtlasName:@"JumpLeft" andImagePrefix:@"jump"];
+    self.jumpRightTextures = [self loadTexturesWithAtlasName:@"JumpRight" andImagePrefix:@"jump"];
 }
 
 +(instancetype) characterWithPosition:(CGPoint)position andScale:(CGFloat)scale {
     return [[self alloc] initWithPosition:position andScale:scale];
+}
+
++(uint32_t)getCategoryMask {
+    return characterCategory;
 }
 @end

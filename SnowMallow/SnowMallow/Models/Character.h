@@ -11,11 +11,15 @@
 @interface Character : SKSpriteNode
 -(instancetype) initWithPosition:(CGPoint) position andScale:(CGFloat) scale;
 +(instancetype) characterWithPosition:(CGPoint) position andScale:(CGFloat) scale;
++(uint32_t) getCategoryMask;
 -(void) jump;
 
 @property BOOL isMoving;
 @property BOOL isGoingLeftDirection;
-@property SKAction *animationJumpAction;
+@property BOOL isJumping;
+@property SKAction *jumpAction;
+@property SKAction *animationJumpLeftAction;
+@property SKAction *animationJumpRightAction;
 @property SKAction *animationMoveLeftAction;
 @property SKAction *animationMoveRightAction;
 @property SKAction *moveLeftAction;
