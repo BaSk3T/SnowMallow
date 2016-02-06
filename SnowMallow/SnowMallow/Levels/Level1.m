@@ -10,6 +10,7 @@
 #import "BSJoystick.h"
 #import "Character.h"
 #import "Platform.h"
+#import "NormalEnemy.h"
 
 @interface Level1()
 @property BSJoystick *joystick;
@@ -41,10 +42,14 @@
         Platform *plat1 = [self createPlatformWithTextureNamed:@"ground" orTexture:nil andPosition:CGPointMake(0, 0)];
         Platform *platMid = [self createPlatformWithTextureNamed:nil orTexture:mediumGround andPosition:CGPointMake(CGRectGetMidX(self.frame) - mediumGround.size.width / 2, self.frame.size.height / 3)];
         
+        NormalEnemy *normEnemy1 = [NormalEnemy normalEnemyWithPosition:CGPointMake(CGRectGetMidX(self.frame) + 50, CGRectGetMidY(self.frame)) andScale:2.5];
+        normEnemy1.physicsBody.collisionBitMask = self.platformCategory;
+        
         [self addChild:self.joystick];
         [self addChild:self.character];
         [self addChild:plat1];
         [self addChild:platMid];
+        [self addChild:normEnemy1];
     }
     return self;
 }

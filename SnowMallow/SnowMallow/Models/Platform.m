@@ -13,7 +13,7 @@
 @end
 
 @implementation Platform
-static const uint32_t platformCategory =  0x1 << 1;
+static const uint32_t platformCategory =  0x1 << 0;
 
 -(instancetype)initWithTexture:(SKTexture *)texture andPosition:(CGPoint) position {
     self = [super initWithTexture:texture];

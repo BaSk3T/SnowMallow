@@ -17,7 +17,7 @@
 
 @implementation Character
 
-static const uint32_t characterCategory =  0x1 << 2;
+static const uint32_t characterCategory =  0x1 << 1;
 
 -(instancetype) initWithPosition:(CGPoint)position andScale:(CGFloat) scale {
     self = [super init];

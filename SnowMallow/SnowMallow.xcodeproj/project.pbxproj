@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */; };
 		BBAA2BC81C665CDF0065BDBD /* JumpRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */; };
+		BBAA2BF11C6696690065BDBD /* NormalEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAA2BF01C6696690065BDBD /* NormalEnemy.m */; };
+		BBAA2BFB1C669AA30065BDBD /* NE-MoveLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BF61C669AA30065BDBD /* NE-MoveLeft.atlas */; };
+		BBAA2BFC1C669AA30065BDBD /* NE-MoveRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BF71C669AA30065BDBD /* NE-MoveRight.atlas */; };
+		BBAA2BFD1C669AA30065BDBD /* NE-RollLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BF81C669AA30065BDBD /* NE-RollLeft.atlas */; };
+		BBAA2BFE1C669AA30065BDBD /* NE-RollRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BF91C669AA30065BDBD /* NE-RollRight.atlas */; };
+		BBAA2C011C669AC90065BDBD /* NE-default.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2C001C669AC90065BDBD /* NE-default.png */; };
 		BBADE0681C651F2E005BC959 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBADE0671C651F2E005BC959 /* main.m */; };
 		BBADE06B1C651F2E005BC959 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBADE06A1C651F2E005BC959 /* AppDelegate.m */; };
 		BBADE06E1C651F2E005BC959 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBADE06D1C651F2E005BC959 /* ViewController.m */; };
@@ -31,6 +37,13 @@
 /* Begin PBXFileReference section */
 		BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpLeft.atlas; sourceTree = "<group>"; };
 		BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpRight.atlas; sourceTree = "<group>"; };
+		BBAA2BEF1C6696690065BDBD /* NormalEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalEnemy.h; sourceTree = "<group>"; };
+		BBAA2BF01C6696690065BDBD /* NormalEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalEnemy.m; sourceTree = "<group>"; };
+		BBAA2BF61C669AA30065BDBD /* NE-MoveLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NE-MoveLeft.atlas"; sourceTree = "<group>"; };
+		BBAA2BF71C669AA30065BDBD /* NE-MoveRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NE-MoveRight.atlas"; sourceTree = "<group>"; };
+		BBAA2BF81C669AA30065BDBD /* NE-RollLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NE-RollLeft.atlas"; sourceTree = "<group>"; };
+		BBAA2BF91C669AA30065BDBD /* NE-RollRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NE-RollRight.atlas"; sourceTree = "<group>"; };
+		BBAA2C001C669AC90065BDBD /* NE-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NE-default.png"; sourceTree = "<group>"; };
 		BBADE0631C651F2E005BC959 /* SnowMallow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowMallow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBADE0671C651F2E005BC959 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBADE0691C651F2E005BC959 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,6 +83,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BBAA2BEB1C66963C0065BDBD /* Enemies */ = {
+			isa = PBXGroup;
+			children = (
+				BBAA2BEF1C6696690065BDBD /* NormalEnemy.h */,
+				BBAA2BF01C6696690065BDBD /* NormalEnemy.m */,
+			);
+			path = Enemies;
+			sourceTree = "<group>";
+		};
+		BBAA2BF21C669AA30065BDBD /* EnemiesAtlases */ = {
+			isa = PBXGroup;
+			children = (
+				BBAA2BF31C669AA30065BDBD /* NormalEnemyAtlases */,
+			);
+			path = EnemiesAtlases;
+			sourceTree = "<group>";
+		};
+		BBAA2BF31C669AA30065BDBD /* NormalEnemyAtlases */ = {
+			isa = PBXGroup;
+			children = (
+				BBAA2BFF1C669AC90065BDBD /* Default */,
+				BBAA2BF61C669AA30065BDBD /* NE-MoveLeft.atlas */,
+				BBAA2BF71C669AA30065BDBD /* NE-MoveRight.atlas */,
+				BBAA2BF81C669AA30065BDBD /* NE-RollLeft.atlas */,
+				BBAA2BF91C669AA30065BDBD /* NE-RollRight.atlas */,
+			);
+			path = NormalEnemyAtlases;
+			sourceTree = "<group>";
+		};
+		BBAA2BFF1C669AC90065BDBD /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				BBAA2C001C669AC90065BDBD /* NE-default.png */,
+			);
+			path = Default;
+			sourceTree = "<group>";
+		};
 		BBADE05A1C651F2E005BC959 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +177,7 @@
 		BBC3D61C1C6526E20094A7E1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BBAA2BEB1C66963C0065BDBD /* Enemies */,
 				BBC3D61D1C6526FC0094A7E1 /* BSJoystick.h */,
 				BBC3D61E1C6526FC0094A7E1 /* BSJoystick.m */,
 				BBC3D6211C6540BC0094A7E1 /* Character.h */,
@@ -148,6 +199,7 @@
 		BBC3D6241C6544EC0094A7E1 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
+				BBAA2BF21C669AA30065BDBD /* EnemiesAtlases */,
 				BBC3D6251C6549C30094A7E1 /* CharacterAtlases */,
 			);
 			path = Atlases;
@@ -246,8 +298,13 @@
 				BBC3D62A1C6549C30094A7E1 /* Default.atlas in Resources */,
 				BBADE0731C651F2E005BC959 /* Assets.xcassets in Resources */,
 				BBC3D6471C657E130094A7E1 /* ground.png in Resources */,
+				BBAA2C011C669AC90065BDBD /* NE-default.png in Resources */,
+				BBAA2BFB1C669AA30065BDBD /* NE-MoveLeft.atlas in Resources */,
+				BBAA2BFC1C669AA30065BDBD /* NE-MoveRight.atlas in Resources */,
 				BBC3D6461C657E130094A7E1 /* ground-small.png in Resources */,
+				BBAA2BFD1C669AA30065BDBD /* NE-RollLeft.atlas in Resources */,
 				BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */,
+				BBAA2BFE1C669AA30065BDBD /* NE-RollRight.atlas in Resources */,
 				BBC3D62D1C6549C30094A7E1 /* MoveRight.atlas in Resources */,
 				BBC3D62C1C6549C30094A7E1 /* MoveLeft.atlas in Resources */,
 				BBADE0711C651F2E005BC959 /* Main.storyboard in Resources */,
@@ -268,6 +325,7 @@
 				BBC3D61F1C6526FC0094A7E1 /* BSJoystick.m in Sources */,
 				BBADE0681C651F2E005BC959 /* main.m in Sources */,
 				BBC3D6231C6540BC0094A7E1 /* Character.m in Sources */,
+				BBAA2BF11C6696690065BDBD /* NormalEnemy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
