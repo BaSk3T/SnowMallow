@@ -97,7 +97,7 @@ static const uint32_t characterCategory =  0x1 << 1;
 -(void) jump {
     self.isJumping = YES;
     
-    if (self.isGoingLeftDirection) {
+    if (self.isFacingLeft) {
         [self runAction:self.animationJumpLeftAction];
     }
     else {
@@ -112,7 +112,7 @@ static const uint32_t characterCategory =  0x1 << 1;
 
 -(void) moveCharacterIfPossible {
     SKAction *repeatWalk;
-    if (self.isGoingLeftDirection) {
+    if (self.isFacingLeft) {
         repeatWalk = [SKAction repeatActionForever:self.animationMoveLeftAction];
         [self runAction:self.moveLeftAction];
     }

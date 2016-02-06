@@ -36,6 +36,7 @@
         
         self.character = [Character characterWithPosition:CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2) andScale:2];
         self.character.physicsBody.collisionBitMask = self.platformCategory;
+        self.character.zPosition = 1;
         
         SKTexture *mediumGround = [SKTexture textureWithImageNamed:@"ground-medium.png"];
         
@@ -56,11 +57,11 @@
 
 -(void)update:(NSTimeInterval)currentTime {
     if (self.joystick.x <= 0 - self.joystick.stickSize / 2) {
-        self.character.isGoingLeftDirection = YES;
+        self.character.isFacingLeft = YES;
         [self.character moveCharacterIfPossible];
     }
     else if (self.joystick.x >= 0 + self.joystick.stickSize / 2) {
-        self.character.isGoingLeftDirection = NO;
+        self.character.isFacingLeft = NO;
         [self.character moveCharacterIfPossible];
     }
     else {
@@ -69,7 +70,7 @@
     
     if (!self.character.isMoving) {
         [self.character removeActionForKey:@"walk"];
-        if (self.character.isGoingLeftDirection) {
+        if (self.character.isFacingLeft) {
             self.character.texture = self.character.defaultLeftTexture;
         }
         else {

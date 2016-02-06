@@ -15,6 +15,10 @@
 		BBAA2BFD1C669AA30065BDBD /* NE-RollLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BF81C669AA30065BDBD /* NE-RollLeft.atlas */; };
 		BBAA2BFE1C669AA30065BDBD /* NE-RollRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BF91C669AA30065BDBD /* NE-RollRight.atlas */; };
 		BBAA2C011C669AC90065BDBD /* NE-default.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2C001C669AC90065BDBD /* NE-default.png */; };
+		BBAA2C061C66ADA30065BDBD /* BigBlast.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2C031C66ADA30065BDBD /* BigBlast.atlas */; };
+		BBAA2C0B1C66ADC70065BDBD /* SnowBlast.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAA2C0A1C66ADC70065BDBD /* SnowBlast.m */; };
+		BBAA2C0F1C66B65F0065BDBD /* Explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2C0D1C66B65F0065BDBD /* Explosion.atlas */; };
+		BBAA2C101C66B65F0065BDBD /* SmallBlast.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2C0E1C66B65F0065BDBD /* SmallBlast.atlas */; };
 		BBADE0681C651F2E005BC959 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBADE0671C651F2E005BC959 /* main.m */; };
 		BBADE06B1C651F2E005BC959 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBADE06A1C651F2E005BC959 /* AppDelegate.m */; };
 		BBADE06E1C651F2E005BC959 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBADE06D1C651F2E005BC959 /* ViewController.m */; };
@@ -44,6 +48,12 @@
 		BBAA2BF81C669AA30065BDBD /* NE-RollLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NE-RollLeft.atlas"; sourceTree = "<group>"; };
 		BBAA2BF91C669AA30065BDBD /* NE-RollRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "NE-RollRight.atlas"; sourceTree = "<group>"; };
 		BBAA2C001C669AC90065BDBD /* NE-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NE-default.png"; sourceTree = "<group>"; };
+		BBAA2C031C66ADA30065BDBD /* BigBlast.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BigBlast.atlas; sourceTree = "<group>"; };
+		BBAA2C091C66ADC70065BDBD /* SnowBlast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowBlast.h; sourceTree = "<group>"; };
+		BBAA2C0A1C66ADC70065BDBD /* SnowBlast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowBlast.m; sourceTree = "<group>"; };
+		BBAA2C0C1C66AECF0065BDBD /* MovableSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovableSpriteNode.h; sourceTree = "<group>"; };
+		BBAA2C0D1C66B65F0065BDBD /* Explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Explosion.atlas; sourceTree = "<group>"; };
+		BBAA2C0E1C66B65F0065BDBD /* SmallBlast.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SmallBlast.atlas; sourceTree = "<group>"; };
 		BBADE0631C651F2E005BC959 /* SnowMallow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowMallow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBADE0671C651F2E005BC959 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBADE0691C651F2E005BC959 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,6 +130,16 @@
 			path = Default;
 			sourceTree = "<group>";
 		};
+		BBAA2C021C66ADA30065BDBD /* SnowBallBlastAtlases */ = {
+			isa = PBXGroup;
+			children = (
+				BBAA2C0D1C66B65F0065BDBD /* Explosion.atlas */,
+				BBAA2C0E1C66B65F0065BDBD /* SmallBlast.atlas */,
+				BBAA2C031C66ADA30065BDBD /* BigBlast.atlas */,
+			);
+			path = SnowBallBlastAtlases;
+			sourceTree = "<group>";
+		};
 		BBADE05A1C651F2E005BC959 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +204,9 @@
 				BBC3D6221C6540BC0094A7E1 /* Character.m */,
 				BBC3D63B1C6570D50094A7E1 /* Platform.h */,
 				BBC3D63C1C6570D50094A7E1 /* Platform.m */,
+				BBAA2C091C66ADC70065BDBD /* SnowBlast.h */,
+				BBAA2C0A1C66ADC70065BDBD /* SnowBlast.m */,
+				BBAA2C0C1C66AECF0065BDBD /* MovableSpriteNode.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,6 +222,7 @@
 		BBC3D6241C6544EC0094A7E1 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
+				BBAA2C021C66ADA30065BDBD /* SnowBallBlastAtlases */,
 				BBAA2BF21C669AA30065BDBD /* EnemiesAtlases */,
 				BBC3D6251C6549C30094A7E1 /* CharacterAtlases */,
 			);
@@ -298,12 +322,15 @@
 				BBC3D62A1C6549C30094A7E1 /* Default.atlas in Resources */,
 				BBADE0731C651F2E005BC959 /* Assets.xcassets in Resources */,
 				BBC3D6471C657E130094A7E1 /* ground.png in Resources */,
+				BBAA2C101C66B65F0065BDBD /* SmallBlast.atlas in Resources */,
 				BBAA2C011C669AC90065BDBD /* NE-default.png in Resources */,
 				BBAA2BFB1C669AA30065BDBD /* NE-MoveLeft.atlas in Resources */,
 				BBAA2BFC1C669AA30065BDBD /* NE-MoveRight.atlas in Resources */,
 				BBC3D6461C657E130094A7E1 /* ground-small.png in Resources */,
+				BBAA2C061C66ADA30065BDBD /* BigBlast.atlas in Resources */,
 				BBAA2BFD1C669AA30065BDBD /* NE-RollLeft.atlas in Resources */,
 				BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */,
+				BBAA2C0F1C66B65F0065BDBD /* Explosion.atlas in Resources */,
 				BBAA2BFE1C669AA30065BDBD /* NE-RollRight.atlas in Resources */,
 				BBC3D62D1C6549C30094A7E1 /* MoveRight.atlas in Resources */,
 				BBC3D62C1C6549C30094A7E1 /* MoveLeft.atlas in Resources */,
@@ -324,6 +351,7 @@
 				BBADE06B1C651F2E005BC959 /* AppDelegate.m in Sources */,
 				BBC3D61F1C6526FC0094A7E1 /* BSJoystick.m in Sources */,
 				BBADE0681C651F2E005BC959 /* main.m in Sources */,
+				BBAA2C0B1C66ADC70065BDBD /* SnowBlast.m in Sources */,
 				BBC3D6231C6540BC0094A7E1 /* Character.m in Sources */,
 				BBAA2BF11C6696690065BDBD /* NormalEnemy.m in Sources */,
 			);

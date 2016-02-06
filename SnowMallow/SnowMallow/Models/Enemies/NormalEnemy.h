@@ -7,9 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "MovableSpriteNode.h"
 
-@interface NormalEnemy : SKSpriteNode
--(instancetype) initWithPosition:(CGPoint) position andScale:(CGFloat) scale;
+@interface NormalEnemy : SKSpriteNode <MovableSpriteNode>
 +(instancetype) normalEnemyWithPosition:(CGPoint) position andScale:(CGFloat) scale;
 
 @property BOOL isMoving;

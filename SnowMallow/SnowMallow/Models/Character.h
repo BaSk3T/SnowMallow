@@ -7,8 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "MovableSpriteNode.h"
 
-@interface Character : SKSpriteNode
+@interface Character : SKSpriteNode <MovableSpriteNode>
 -(instancetype) initWithPosition:(CGPoint) position andScale:(CGFloat) scale;
 +(instancetype) characterWithPosition:(CGPoint) position andScale:(CGFloat) scale;
 +(uint32_t) getCategoryMask;
@@ -16,7 +17,7 @@
 -(void) jump;
 
 @property BOOL isMoving;
-@property BOOL isGoingLeftDirection;
+@property BOOL isFacingLeft;
 @property BOOL isJumping;
 @property SKAction *jumpAction;
 @property SKAction *animationJumpLeftAction;
