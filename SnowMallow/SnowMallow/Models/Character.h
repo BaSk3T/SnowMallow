@@ -12,6 +12,7 @@
 -(instancetype) initWithPosition:(CGPoint) position andScale:(CGFloat) scale;
 +(instancetype) characterWithPosition:(CGPoint) position andScale:(CGFloat) scale;
 +(uint32_t) getCategoryMask;
+-(void) moveCharacterIfPossible;
 -(void) jump;
 
 @property BOOL isMoving;

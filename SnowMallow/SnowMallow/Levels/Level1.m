@@ -51,20 +51,12 @@
 
 -(void)update:(NSTimeInterval)currentTime {
     if (self.joystick.x <= 0 - self.joystick.stickSize / 2) {
-        SKAction *repeatWalk = [SKAction repeatActionForever:self.character.animationMoveLeftAction];
         self.character.isGoingLeftDirection = YES;
-        
-        [self moveCharacterIfPossibleWithAction:repeatWalk];
-        
-        [self.character runAction:self.character.moveLeftAction];
+        [self.character moveCharacterIfPossible];
     }
     else if (self.joystick.x >= 0 + self.joystick.stickSize / 2) {
-        SKAction *repeatWalk = [SKAction repeatActionForever:self.character.animationMoveRightAction];
         self.character.isGoingLeftDirection = NO;
-        
-        [self moveCharacterIfPossibleWithAction:repeatWalk];
-        
-        [self.character runAction:self.character.moveRightAction];
+        [self.character moveCharacterIfPossible];
     }
     else {
         self.character.isMoving = NO;
@@ -81,34 +73,14 @@
         
     }
     
-    if (self.joystick.y >= 0 + self.joystick.stickSize / 2 && !self.character.isJumping) {
-        SKAction *jumpAction = [SKAction moveByX:0 y:200 duration:0.5];
-        
-        self.character.isJumping = YES;
-        
-        if (self.character.isGoingLeftDirection) {
-            [self.character runAction:self.character.animationJumpLeftAction];
-        }
-        else {
-            [self.character runAction:self.character.animationJumpRightAction];
-        }
-        
-        [self.character runAction:jumpAction completion:^{
-            self.character.isJumping = NO;
-        }];
+    if (!self.character.isJumping && self.joystick.y >= 0 + self.joystick.stickSize / 2) {
+        [self.character jump];
     }
 
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact {
     NSLog(@"contact detected");
-}
-
--(void) moveCharacterIfPossibleWithAction:(SKAction*) repeatWalk{
-    if (!self.character.isMoving) {
-        self.character.isMoving = YES;
-        [self.character runAction:repeatWalk withKey:@"walk"];
-    }
 }
 
 -(Platform*) createPlatformWithTextureNamed:(NSString*) textureName orTexture:(SKTexture*) texture andPosition:(CGPoint) position {

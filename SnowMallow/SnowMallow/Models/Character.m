@@ -94,6 +94,39 @@ static const uint32_t characterCategory =  0x1 << 2;
     self.jumpRightTextures = [self loadTexturesWithAtlasName:@"JumpRight" andImagePrefix:@"jump"];
 }
 
+-(void) jump {
+    self.isJumping = YES;
+    
+    if (self.isGoingLeftDirection) {
+        [self runAction:self.animationJumpLeftAction];
+    }
+    else {
+        [self runAction:self.animationJumpRightAction];
+    }
+    
+    [self runAction:self.jumpAction completion:^{
+        self.isJumping = NO;
+    }];
+    
+}
+
+-(void) moveCharacterIfPossible {
+    SKAction *repeatWalk;
+    if (self.isGoingLeftDirection) {
+        repeatWalk = [SKAction repeatActionForever:self.animationMoveLeftAction];
+        [self runAction:self.moveLeftAction];
+    }
+    else {
+        repeatWalk = [SKAction repeatActionForever:self.animationMoveRightAction];
+        [self runAction:self.moveRightAction];
+    }
+    
+    if (!self.isMoving) {
+        self.isMoving = YES;
+        [self runAction:repeatWalk withKey:@"walk"];
+    }
+}
+
 +(instancetype) characterWithPosition:(CGPoint)position andScale:(CGFloat)scale {
     return [[self alloc] initWithPosition:position andScale:scale];
 }
