@@ -17,4 +17,5 @@
 @property SKAction *moveLeftAction;
 @property SKAction *moveRightAction;
 -(void)moveInDirection:(BOOL)isFacingLeft;
++(uint32_t)getCategoryMask;
 @end

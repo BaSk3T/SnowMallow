@@ -106,9 +106,7 @@ static const uint32_t snowBlastCategory =  0x1 << 3;
         }
         [self runAction:self.moveLeftAction completion:^{
             [self removeActionForKey:@"move"];
-            [self runAction:self.animationExplodeAction completion:^{
-                [self removeFromParent];
-            }];
+            [self removeFromParent];
         }];
         
     }
@@ -118,11 +116,13 @@ static const uint32_t snowBlastCategory =  0x1 << 3;
         }
         [self runAction:self.moveRightAction completion:^{
             [self removeActionForKey:@"move"];
-            [self runAction:self.animationExplodeAction completion:^{
-                [self removeFromParent];
-            }];
+            [self removeFromParent];
         }];
     }
+}
+
++(uint32_t)getCategoryMask {
+    return snowBlastCategory;
 }
 
 +(instancetype)snowBlastWithPosition:(CGPoint)position andPower:(NSNumber*)power {
