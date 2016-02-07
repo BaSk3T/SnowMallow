@@ -11,12 +11,14 @@
 #import "Character.h"
 #import "Platform.h"
 #import "NormalEnemy.h"
+#import "SnowBlast.h"
 
 @interface Level1()
 @property BSJoystick *joystick;
 @property Character *character;
 @property uint32_t platformCategory;
 @property uint32_t characterCategory;
+@property uint32_t enemyCategory;
 @end
 
 @implementation Level1
@@ -26,6 +28,7 @@
     if (self) {
         self.platformCategory = [Platform getCategoryMask];
         self.characterCategory = [Character getCategoryMask];
+        self.enemyCategory = [NormalEnemy getCategoryMask];
         
         self.backgroundColor = [UIColor blackColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
@@ -53,6 +56,15 @@
         [self addChild:normEnemy1];
     }
     return self;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    SnowBlast *snowBlast = [SnowBlast snowBlastWithPosition:CGPointMake(self.character.position.x, self.character.position.y) andPower:self.character.snowBlastPower];
+    snowBlast.physicsBody.collisionBitMask = self.enemyCategory | self.platformCategory;
+    
+    [self addChild:snowBlast];
+    
+    [snowBlast moveInDirection:self.character.isFacingLeft];
 }
 
 -(void)update:(NSTimeInterval)currentTime {

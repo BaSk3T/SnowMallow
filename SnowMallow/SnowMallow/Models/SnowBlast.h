@@ -10,11 +10,11 @@
 #import "MovableSpriteNode.h"
 
 @interface SnowBlast : SKSpriteNode <MovableSpriteNode>
-+(instancetype) snowBlastWithPosition:(CGPoint) position andScale:(CGFloat) scale;
-
-@property SKAction *animationMoveSmallAction;
-@property SKAction *animationMoveBigAction;
+-(instancetype)initWithPosition:(CGPoint)position andPower:(NSNumber*)power;
++(instancetype) snowBlastWithPosition:(CGPoint) position andPower:(NSNumber*) power;
+@property SKAction *animationMoveAction;
 @property SKAction *animationExplodeAction;
 @property SKAction *moveLeftAction;
 @property SKAction *moveRightAction;
+-(void)moveInDirection:(BOOL)isFacingLeft;
 @end

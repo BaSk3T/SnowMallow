@@ -7,6 +7,7 @@
 //
 
 #import "Character.h"
+#import "SnowBlast.h"
 
 @interface Character()
 @property NSArray *moveLeftTextures;
@@ -31,6 +32,8 @@ static const uint32_t characterCategory =  0x1 << 1;
         // Initiate default texture
         self.texture = self.defaultLeftTexture;
         self.size = CGSizeMake(self.texture.size.width, self.texture.size.height);
+        
+        self.snowBlastPower = @1;
         
         // Set size
         self.xScale = scale;

@@ -10,8 +10,9 @@
 #import "MovableSpriteNode.h"
 
 @interface NormalEnemy : SKSpriteNode <MovableSpriteNode>
+-(instancetype)initWithPosition:(CGPoint)position andScale:(CGFloat)scale;
 +(instancetype) normalEnemyWithPosition:(CGPoint) position andScale:(CGFloat) scale;
-
++(uint32_t)getCategoryMask;
 @property BOOL isMoving;
 @property BOOL isGoingLeftDirection;
 @property SKAction *animationMoveLeftAction;

@@ -9,37 +9,36 @@
 #import "SnowBlast.h"
 
 @interface SnowBlast()
-@property NSArray *moveSmallTextures;
-@property NSArray *moveBigTextures;
+@property NSArray *moveTextures;
 @property NSArray *explodeTextures;
-
+@property NSNumber *power;
+@property CGFloat distanceToMove;
 @end
 
 @implementation SnowBlast
 
 static const uint32_t snowBlastCategory =  0x1 << 3;
 
--(instancetype)initWithPosition:(CGPoint)position andScale:(CGFloat)scale {
+-(instancetype)initWithPosition:(CGPoint)position andPower:(NSNumber*)power {
     self = [super init];
     
     if (self) {
         self.position = position;
+        self.power = power;
         
         // Fill arrays with textures for given animation
         [self loadDefaultTextures];
         
-        SKTexture *textureForSize = self.moveBigTextures[0];
-        self.size = CGSizeMake(textureForSize.size.width, textureForSize.size.height);
+        self.distanceToMove = self.size.width * 10;
         
-        // Set size
-        self.xScale = scale;
-        self.yScale = scale;
+        self.anchorPoint = CGPointMake(0.5, 0.5);
         
         // Setting physics
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height)];
         self.physicsBody.dynamic = YES;
         self.physicsBody.allowsRotation = NO;
         self.physicsBody.categoryBitMask = snowBlastCategory;
+        self.physicsBody.affectedByGravity = NO;
         
         // Load all actions
         [self loadActionsForCharacter];
@@ -50,11 +49,10 @@ static const uint32_t snowBlastCategory =  0x1 << 3;
 }
 
 -(void) loadActionsForCharacter {
-    self.animationMoveSmallAction = [SKAction animateWithTextures:self.moveSmallTextures timePerFrame:0.1];
-    self.animationMoveBigAction = [SKAction animateWithTextures:self.moveBigTextures timePerFrame:0.1];
+    self.animationMoveAction = [SKAction animateWithTextures:self.moveTextures timePerFrame:0.15];
     self.animationExplodeAction = [SKAction animateWithTextures:self.explodeTextures timePerFrame:0.1];
-    self.moveLeftAction = [SKAction moveByX:-self.size.width y:0 duration:0.1];
-    self.moveRightAction = [SKAction moveByX:self.size.width y:0 duration:0.1];
+    self.moveLeftAction = [SKAction moveByX:-self.distanceToMove y:0 duration:0.75];
+    self.moveRightAction = [SKAction moveByX:self.distanceToMove y:0 duration:0.75];
 }
 
 // Returns all the textures for given atlas into NSMutableArray
@@ -75,13 +73,59 @@ static const uint32_t snowBlastCategory =  0x1 << 3;
 
 // Fills array of textures and sets default left and right textures
 -(void) loadDefaultTextures {
-    self.moveSmallTextures = [self loadTexturesWithAtlasName:@"SmallBlast" andImagePrefix:@"small-blast"];
-    self.moveBigTextures = [self loadTexturesWithAtlasName:@"BigBlast" andImagePrefix:@"big-blast"];
+    
+    if (self.power.intValue == 1) {
+        self.moveTextures = [self loadTexturesWithAtlasName:@"SmallBlast" andImagePrefix:@"small-blast"];
+        
+        SKTexture *textureForSize = self.moveTextures[0];
+        self.size = CGSizeMake(textureForSize.size.width, textureForSize.size.height);
+        
+        self.xScale += 3;
+        self.yScale += 3;
+    }
+    else if (self.power.intValue == 2) {
+        self.moveTextures = [self loadTexturesWithAtlasName:@"BigBlast" andImagePrefix:@"big-blast"];
+        
+        SKTexture *textureForSize = self.moveTextures[0];
+        self.size = CGSizeMake(textureForSize.size.width, textureForSize.size.height);
+        
+        self.xScale += 1.5;
+        self.yScale += 3;
+    }
+    
     self.explodeTextures = [self loadTexturesWithAtlasName:@"Explosion" andImagePrefix:@"explode"];
 }
 
+-(void)moveInDirection:(BOOL)isFacingLeft {
+    SKAction *repeatMove = [SKAction repeatActionForever:self.animationMoveAction];
+    [self runAction:repeatMove withKey:@"move"];
+    
+    if (isFacingLeft) {
+        if (self.xScale < 0) {
+            self.xScale *= -1;
+        }
+        [self runAction:self.moveLeftAction completion:^{
+            [self removeActionForKey:@"move"];
+            [self runAction:self.animationExplodeAction completion:^{
+                [self removeFromParent];
+            }];
+        }];
+        
+    }
+    else {
+        if (self.xScale > 0) {
+            self.xScale *= -1;
+        }
+        [self runAction:self.moveRightAction completion:^{
+            [self removeActionForKey:@"move"];
+            [self runAction:self.animationExplodeAction completion:^{
+                [self removeFromParent];
+            }];
+        }];
+    }
+}
 
-+(instancetype)snowBlastWithPosition:(CGPoint)position andScale:(CGFloat)scale {
-    return [[self alloc] initWithPosition:position andScale:scale];
++(instancetype)snowBlastWithPosition:(CGPoint)position andPower:(NSNumber*)power {
+    return [[self alloc] initWithPosition:position andPower:power];
 }
 @end

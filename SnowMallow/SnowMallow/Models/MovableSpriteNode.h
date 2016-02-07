@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol MovableSpriteNode <NSObject>
--(instancetype) initWithPosition:(CGPoint) position andScale:(CGFloat) scale;
 -(NSMutableArray*) loadTexturesWithAtlasName:(NSString*) atlasName andImagePrefix:(NSString*) imagePrefix;
 -(void) loadActionsForCharacter;
 -(void) loadDefaultTextures;

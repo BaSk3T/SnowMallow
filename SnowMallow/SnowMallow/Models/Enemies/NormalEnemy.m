@@ -85,9 +85,12 @@ static const uint32_t enemyCategory =  0x1 << 2;
     self.moveLeftTextures = [self loadTexturesWithAtlasName:@"NE-MoveLeft" andImagePrefix:@"move-left"];
     self.moveRightTextures = [self loadTexturesWithAtlasName:@"NE-MoveRight" andImagePrefix:@"move-right"];
     self.rollLeftTextures = [self loadTexturesWithAtlasName:@"NE-RollLeft" andImagePrefix:@"roll-left"];
-    self.rollRightTextures = [self loadTexturesWithAtlasName:@"NE-ROllRight" andImagePrefix:@"roll-right"];
+    self.rollRightTextures = [self loadTexturesWithAtlasName:@"NE-RollRight" andImagePrefix:@"roll-right"];
 }
 
++(uint32_t)getCategoryMask {
+    return enemyCategory;
+}
 
 +(instancetype)normalEnemyWithPosition:(CGPoint)position andScale:(CGFloat)scale {
     return [[self alloc] initWithPosition:position andScale:scale];
