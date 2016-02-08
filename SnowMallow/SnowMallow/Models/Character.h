@@ -15,7 +15,7 @@
 +(uint32_t) getCategoryMask;
 -(void) moveCharacterIfPossible;
 -(void) jump;
-
+-(void) throwSnowBlast;
 @property BOOL isMoving;
 @property BOOL isFacingLeft;
 @property BOOL isJumping;
@@ -23,6 +23,10 @@
 @property SKAction *jumpAction;
 @property SKAction *animationJumpLeftAction;
 @property SKAction *animationJumpRightAction;
+@property SKAction *animationPushLeftAction;
+@property SKAction *animationPushRightAction;
+@property SKAction *animationThrowLeftAction;
+@property SKAction *animationThrowRightAction;
 @property SKAction *animationMoveLeftAction;
 @property SKAction *animationMoveRightAction;
 @property SKAction *moveLeftAction;

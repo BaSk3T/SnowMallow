@@ -14,6 +14,10 @@
 @property NSArray *moveRightTextures;
 @property NSArray *jumpLeftTextures;
 @property NSArray *jumpRightTextures;
+@property NSArray *pushLeftTextures;
+@property NSArray *pushRightTextures;
+@property NSArray *throwLeftTextures;
+@property NSArray *throwRightTextures;
 @end
 
 @implementation Character
@@ -41,7 +45,6 @@ static const uint32_t characterCategory =  0x1 << 1;
         
         // Setting physics
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height - self.size.height / 10)];
-        //self.physicsBody.mass = 1.0;
         self.physicsBody.dynamic = YES;
         self.physicsBody.allowsRotation = NO;
         self.physicsBody.categoryBitMask = characterCategory;
@@ -56,8 +59,12 @@ static const uint32_t characterCategory =  0x1 << 1;
 -(void) loadActionsForCharacter {
     self.animationJumpLeftAction = [SKAction animateWithTextures:self.jumpLeftTextures timePerFrame:0.1];
     self.animationJumpRightAction = [SKAction animateWithTextures:self.jumpRightTextures timePerFrame:0.1];
-    self.animationMoveLeftAction = [SKAction animateWithTextures:self.moveLeftTextures timePerFrame:0.15];
-    self.animationMoveRightAction = [SKAction animateWithTextures:self.moveRightTextures timePerFrame:0.15];
+    self.animationMoveLeftAction = [SKAction animateWithTextures:self.moveLeftTextures timePerFrame:0.1];
+    self.animationMoveRightAction = [SKAction animateWithTextures:self.moveRightTextures timePerFrame:0.1];
+    self.animationThrowLeftAction = [SKAction animateWithTextures:self.throwLeftTextures timePerFrame:0.1];
+    self.animationThrowRightAction = [SKAction animateWithTextures:self.throwRightTextures timePerFrame:0.1];
+    self.animationPushLeftAction = [SKAction animateWithTextures:self.pushLeftTextures timePerFrame:0.15];
+    self.animationPushRightAction = [SKAction animateWithTextures:self.pushRightTextures timePerFrame:0.15];
     self.moveLeftAction = [SKAction moveByX:-self.size.width / 6 y:0 duration:0.1];
     self.moveRightAction = [SKAction moveByX:self.size.width / 6 y:0 duration:0.1];
     self.jumpAction = [SKAction moveByX:0 y:200 duration:0.5];
@@ -95,6 +102,10 @@ static const uint32_t characterCategory =  0x1 << 1;
     self.moveRightTextures = [self loadTexturesWithAtlasName:@"MoveRight" andImagePrefix:@"move-right"];
     self.jumpLeftTextures = [self loadTexturesWithAtlasName:@"JumpLeft" andImagePrefix:@"jump"];
     self.jumpRightTextures = [self loadTexturesWithAtlasName:@"JumpRight" andImagePrefix:@"jump"];
+    self.throwLeftTextures = [self loadTexturesWithAtlasName:@"ThrowLeft" andImagePrefix:@"throw-left"];
+    self.throwRightTextures = [self loadTexturesWithAtlasName:@"ThrowRight" andImagePrefix:@"throw-right"];
+    self.pushLeftTextures = [self loadTexturesWithAtlasName:@"PushLeft" andImagePrefix:@"push-left"];
+    self.pushRightTextures = [self loadTexturesWithAtlasName:@"PushRight" andImagePrefix:@"push-right"];
 }
 
 -(void) jump {
@@ -111,6 +122,15 @@ static const uint32_t characterCategory =  0x1 << 1;
         self.isJumping = NO;
     }];
     
+}
+
+-(void) throwSnowBlast {
+    if (self.isFacingLeft) {
+        [self runAction:self.animationThrowLeftAction];
+    }
+    else {
+        [self runAction:self.animationThrowRightAction];
+    }
 }
 
 -(void) moveCharacterIfPossible {

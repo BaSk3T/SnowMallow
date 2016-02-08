@@ -12,16 +12,18 @@
 @property NSArray *textures;
 @property SKAction *fullyFrostedAction;
 @property SKAction *halfFrostedAction;
+@property NormalEnemy* enemy;
 @end
 
 @implementation Snowball
 
-static const uint32_t snowballCategory =  0x1 << 4;
+static const uint32_t snowballCategory =  0x1 << 6;
 
--(instancetype)initWithPosition:(CGPoint)position andScale:(CGFloat)scale {
+-(instancetype)initWithPosition:(CGPoint)position enemy:(NormalEnemy*)enemy andScale:(CGFloat)scale {
     self = [super init];
     
     if (self) {
+        self.enemy = enemy;
         self.position = position;
         
         // Fill arrays with textures for given animation
@@ -31,17 +33,14 @@ static const uint32_t snowballCategory =  0x1 << 4;
         self.name = @"snowball";
         self.levelOfFreeze = 0;
         self.texture = self.textures[0];
+        self.fullTexture = self.textures[3];
         self.size = CGSizeMake(self.texture.size.width, self.texture.size.height);
+        
+        self.physicsBody.categoryBitMask = snowballCategory;
         
         // Set size
         self.xScale = scale;
         self.yScale = scale;
-        
-        // Setting physics
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height)];
-        self.physicsBody.dynamic = YES;
-        self.physicsBody.allowsRotation = NO;
-        self.physicsBody.categoryBitMask = snowballCategory;
         
         // Load all actions
         [self loadActionsForCharacter];
@@ -94,6 +93,9 @@ static const uint32_t snowballCategory =  0x1 << 4;
         self.texture = self.textures[0];
         [self runAction:self.halfFrostedAction completion:^{
             if (self.levelOfFreeze == 1) {
+                self.enemy.isFreezed = NO;
+                [self.enemy removeActionForKey:@"roll"];
+                [self.enemy setTexture:self.enemy.defaultTexture];
                 [self removeFromParent];
             }
         }];
@@ -132,8 +134,8 @@ static const uint32_t snowballCategory =  0x1 << 4;
     return snowballCategory;
 }
 
-+(instancetype)snowballWithPosition:(CGPoint)position andScale:(CGFloat)scale {
-    return [[self alloc] initWithPosition:position andScale:scale];
++(instancetype)snowballWithPosition:(CGPoint)position enemy:(NormalEnemy*)enemy andScale:(CGFloat)scale {
+    return [[self alloc] initWithPosition:position enemy:enemy andScale:scale];
 }
 
 @end

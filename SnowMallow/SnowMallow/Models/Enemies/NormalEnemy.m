@@ -7,6 +7,7 @@
 //
 
 #import "NormalEnemy.h"
+#import "Snowball.h"
 
 @interface NormalEnemy()
 
@@ -14,7 +15,7 @@
 @property NSArray *moveRightTextures;
 @property NSArray *rollLeftTextures;
 @property NSArray *rollRightTextures;
-
+@property NSArray *disappearTextures;
 @end
 
 @implementation NormalEnemy
@@ -26,6 +27,7 @@ static const uint32_t enemyCategory =  0x1 << 2;
     
     if (self) {
         self.position = position;
+        self.name = @"enemy";
         
         // Fill arrays with textures for given animation
         [self loadDefaultTextures];
@@ -57,8 +59,11 @@ static const uint32_t enemyCategory =  0x1 << 2;
     self.animationMoveRightAction = [SKAction animateWithTextures:self.moveRightTextures timePerFrame:0.15];
     self.animationRollLeftAction = [SKAction animateWithTextures:self.rollLeftTextures timePerFrame:0.15];
     self.animationRollRightAction = [SKAction animateWithTextures:self.rollRightTextures timePerFrame:0.15];
+    self.animationDisappearAction = [SKAction animateWithTextures:self.disappearTextures timePerFrame:0.15];
     self.moveLeftAction = [SKAction moveByX:-self.size.width / 6 y:0 duration:0.1];
     self.moveRightAction = [SKAction moveByX:self.size.width / 6 y:0 duration:0.1];
+    self.pushedLeftAction = [SKAction moveByX:-self.size.width y:0 duration:0.1];
+    self.pushedRightAction = [SKAction moveByX:self.size.width y:0 duration:0.1];
 }
 
 // Returns all the textures for given atlas into NSMutableArray
@@ -86,6 +91,51 @@ static const uint32_t enemyCategory =  0x1 << 2;
     self.moveRightTextures = [self loadTexturesWithAtlasName:@"NE-MoveRight" andImagePrefix:@"move-right"];
     self.rollLeftTextures = [self loadTexturesWithAtlasName:@"NE-RollLeft" andImagePrefix:@"roll-left"];
     self.rollRightTextures = [self loadTexturesWithAtlasName:@"NE-RollRight" andImagePrefix:@"roll-right"];
+    self.disappearTextures = [self loadTexturesWithAtlasName:@"Disappear" andImagePrefix:@"disappear"];
+}
+
+-(void) wasHit {
+    self.isFreezed = YES;
+    SKAction *repeatRoll;
+    
+    if (self.isFacingLeft) {
+        repeatRoll = [SKAction repeatActionForever:self.animationRollLeftAction];
+    }
+    else {
+        repeatRoll = [SKAction repeatActionForever:self.animationRollRightAction];
+    }
+    
+    [self runAction:repeatRoll withKey:@"roll"];
+}
+
+-(void)rollSnowballInDirection:(BOOL)isFacingLeft {
+    SKAction *repeatMove;
+    self.isFacingLeft = isFacingLeft;
+    
+    if (isFacingLeft) {
+        repeatMove = [SKAction repeatActionForever:self.pushedLeftAction];
+        //[self runAction:self.pushedLeftAction];
+        //[self.physicsBody applyImpulse:CGVectorMake(-150.0, 0)];
+    }
+    else {
+        repeatMove = [SKAction repeatActionForever:self.pushedRightAction];
+        //[self runAction:self.pushedRightAction];
+        //[self.physicsBody applyImpulse:CGVectorMake(150.0, 0)];
+    }
+    
+    [self runAction:repeatMove withKey:@"towardsWall"];
+}
+
+-(void) wasDestroyed {
+    SKAction *rotate = [SKAction rotateToAngle:360 duration:(NSTimeInterval)0.45];
+    SKAction *group = [SKAction group:@[rotate, self.animationDisappearAction]];
+    
+    [self removeAllChildren];
+    
+    [self runAction:group completion:^{
+        [self removeAllActions];
+        [self removeFromParent];
+    }];
 }
 
 +(uint32_t)getCategoryMask {
