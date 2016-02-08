@@ -96,6 +96,7 @@ static const uint32_t snowballCategory =  0x1 << 6;
                 self.enemy.isFreezed = NO;
                 [self.enemy removeActionForKey:@"roll"];
                 [self.enemy setTexture:self.enemy.defaultTexture];
+                [self.enemy updateRepeatedMovingActions];
                 [self removeFromParent];
             }
         }];

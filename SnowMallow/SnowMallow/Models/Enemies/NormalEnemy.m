@@ -16,18 +16,23 @@
 @property NSArray *rollLeftTextures;
 @property NSArray *rollRightTextures;
 @property NSArray *disappearTextures;
+@property SKAction *combinedLeftActions;
+@property SKAction *combinedRightActions;
+@property SKAction *repeatCombinedMovingActions;
 @end
 
 @implementation NormalEnemy
 
 static const uint32_t enemyCategory =  0x1 << 2;
 
--(instancetype)initWithPosition:(CGPoint)position andScale:(CGFloat)scale {
+-(instancetype)initWithPosition:(CGPoint)position direction:(BOOL) isFacingLeft andScale:(CGFloat)scale {
     self = [super init];
     
     if (self) {
         self.position = position;
         self.name = @"enemy";
+        
+        self.isFacingLeft = isFacingLeft;
         
         // Fill arrays with textures for given animation
         [self loadDefaultTextures];
@@ -48,7 +53,7 @@ static const uint32_t enemyCategory =  0x1 << 2;
         
         // Load all actions
         [self loadActionsForCharacter];
-
+        [self updateRepeatedMovingActions];
     }
     
     return self;
@@ -60,10 +65,13 @@ static const uint32_t enemyCategory =  0x1 << 2;
     self.animationRollLeftAction = [SKAction animateWithTextures:self.rollLeftTextures timePerFrame:0.15];
     self.animationRollRightAction = [SKAction animateWithTextures:self.rollRightTextures timePerFrame:0.15];
     self.animationDisappearAction = [SKAction animateWithTextures:self.disappearTextures timePerFrame:0.15];
-    self.moveLeftAction = [SKAction moveByX:-self.size.width / 6 y:0 duration:0.1];
-    self.moveRightAction = [SKAction moveByX:self.size.width / 6 y:0 duration:0.1];
+    self.moveLeftAction = [SKAction moveByX:-self.size.width * 3 y:0 duration:3];
+    self.moveRightAction = [SKAction moveByX:self.size.width * 3 y:0 duration:3];
     self.pushedLeftAction = [SKAction moveByX:-self.size.width y:0 duration:0.1];
     self.pushedRightAction = [SKAction moveByX:self.size.width y:0 duration:0.1];
+    
+    self.combinedLeftActions = [SKAction group:@[[SKAction repeatAction:self.animationMoveLeftAction count:10], self.moveLeftAction]];
+    self.combinedRightActions = [SKAction group:@[[SKAction repeatAction:self.animationMoveRightAction count:10], self.moveRightAction]];
 }
 
 // Returns all the textures for given atlas into NSMutableArray
@@ -97,6 +105,8 @@ static const uint32_t enemyCategory =  0x1 << 2;
 -(void) wasHit {
     self.isFreezed = YES;
     SKAction *repeatRoll;
+    
+    [self removeActionForKey:@"repeatedMoving"];
     
     if (self.isFacingLeft) {
         repeatRoll = [SKAction repeatActionForever:self.animationRollLeftAction];
@@ -138,11 +148,22 @@ static const uint32_t enemyCategory =  0x1 << 2;
     }];
 }
 
+-(void) updateRepeatedMovingActions {
+    if (self.isFacingLeft) {
+        self.repeatCombinedMovingActions = [SKAction repeatActionForever:[SKAction sequence:@[self.combinedLeftActions, self.combinedRightActions]]];
+    }
+    else {
+        self.repeatCombinedMovingActions = [SKAction repeatActionForever:[SKAction sequence:@[self.combinedRightActions, self.combinedLeftActions]]];
+    }
+    
+    [self runAction:self.repeatCombinedMovingActions withKey:@"repeatedMoving"];
+}
+
 +(uint32_t)getCategoryMask {
     return enemyCategory;
 }
 
-+(instancetype)normalEnemyWithPosition:(CGPoint)position andScale:(CGFloat)scale {
-    return [[self alloc] initWithPosition:position andScale:scale];
++(instancetype)normalEnemyWithPosition:(CGPoint)position direction:(BOOL) isFacingLeft andScale:(CGFloat)scale {
+    return [[self alloc] initWithPosition:position direction:isFacingLeft andScale:scale];
 }
 @end

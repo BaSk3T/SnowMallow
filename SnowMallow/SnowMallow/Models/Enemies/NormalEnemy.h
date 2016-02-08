@@ -10,16 +10,18 @@
 #import "MovableSpriteNode.h"
 
 @interface NormalEnemy : SKSpriteNode <MovableSpriteNode>
--(instancetype)initWithPosition:(CGPoint)position andScale:(CGFloat)scale;
+-(instancetype)initWithPosition:(CGPoint)position direction:(BOOL) isFacingLeft andScale:(CGFloat)scale;
 -(void) wasHit;
 -(void) wasDestroyed;
+-(void) updateRepeatedMovingActions;
 -(void) rollSnowballInDirection:(BOOL) isFacingLeft;
-+(instancetype) normalEnemyWithPosition:(CGPoint) position andScale:(CGFloat) scale;
++(instancetype) normalEnemyWithPosition:(CGPoint) position direction:(BOOL) isFacingLeft andScale:(CGFloat) scale;
 +(uint32_t)getCategoryMask;
-@property BOOL isMoving;
+@property BOOL isSliding;
 @property BOOL isFacingLeft;
 @property BOOL isFreezed;
 @property BOOL isPushed;
+@property SKAction *startFollowingPathAction;
 @property SKAction *animationMoveLeftAction;
 @property SKAction *animationMoveRightAction;
 @property SKAction *animationRollLeftAction;

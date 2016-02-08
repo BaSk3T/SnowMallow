@@ -63,11 +63,11 @@ static const uint32_t levelCategory =  0x1 << 5;
         Platform *plat2 = [self createPlatformWithTextureNamed:nil orTexture:mediumGround andPosition:CGPointMake(0, 300)];
         Platform *plat3 = [self createPlatformWithTextureNamed:nil orTexture:mediumGround andPosition:CGPointMake(370, 200)];
         
-        NormalEnemy *normEnemy1 = [NormalEnemy normalEnemyWithPosition:CGPointMake(CGRectGetMidX(self.frame) - 100, 320) andScale:2.5];
+        NormalEnemy *normEnemy1 = [NormalEnemy normalEnemyWithPosition:CGPointMake(CGRectGetMidX(self.frame) - 100, 320) direction:NO andScale:2.5];
         normEnemy1.physicsBody.collisionBitMask = self.platformCategory | levelCategory;
         normEnemy1.physicsBody.contactTestBitMask = self.snowBlastCategory | levelCategory | self.enemyCategory;
         
-        NormalEnemy *normEnemy2 = [NormalEnemy normalEnemyWithPosition:CGPointMake(CGRectGetMidX(self.frame) - 200, 320) andScale:2.5];
+        NormalEnemy *normEnemy2 = [NormalEnemy normalEnemyWithPosition:CGPointMake(CGRectGetMidX(self.frame) - 300, 320) direction:YES andScale:2.5];
         normEnemy2.physicsBody.collisionBitMask = self.platformCategory | levelCategory;
         normEnemy2.physicsBody.contactTestBitMask = self.snowBlastCategory | levelCategory | self.enemyCategory;
         
@@ -81,7 +81,6 @@ static const uint32_t levelCategory =  0x1 << 5;
         Ender *rightEnd = [Ender enderWithPosition:CGPointMake(self.frame.size.width - enderWidth, plat1.size.height) width:enderWidth andHeight:enderHeight];
         rightEnd.fillColor = [UIColor redColor];
         rightEnd.physicsBody.contactTestBitMask = self.enemyCategory;
-        
         
         [self addChild:leftEnd];
         [self addChild:rightEnd];
@@ -174,22 +173,31 @@ static const uint32_t levelCategory =  0x1 << 5;
     if (contact.bodyA.categoryBitMask == self.enemyCategory
         && contact.bodyB.categoryBitMask == self.enemyCategory) {
         NormalEnemy *enemy = (NormalEnemy*)contact.bodyA.node;
+        NormalEnemy *enemy2 = (NormalEnemy*)contact.bodyB.node;
         NSLog(@"snowball colided with enemy");
         
-        Snowball *snowballOfEnemy = (Snowball*)[enemy childNodeWithName:@"snowball"];
-
-        if (!enemy.isFreezed) {
-            [enemy wasDestroyed];
+        if (!enemy.isFreezed && !enemy2.isFreezed) {
+            return;
         }
-        else if (snowballOfEnemy.levelOfFreeze != 4) {
-            [enemy wasDestroyed];
+        
+        NormalEnemy *enemyNotFreezed = enemy.isFreezed ? enemy2 : enemy;
+        NormalEnemy *otherEnemy = !enemy.isFreezed ? enemy2 : enemy;
+        
+        Snowball *snowballOfEnemy = (Snowball*)[enemyNotFreezed childNodeWithName:@"snowball"];
+
+        if (!enemyNotFreezed.isFreezed && otherEnemy.isPushed) {
+            [enemyNotFreezed wasDestroyed];
+            return;
+        }
+        else if (snowballOfEnemy.levelOfFreeze != 4 && otherEnemy.isPushed) {
+            [enemyNotFreezed wasDestroyed];
         }
         else {
-            enemy.isPushed = YES;
+            enemyNotFreezed.isPushed = YES;
             [snowballOfEnemy removeAllActions];
             snowballOfEnemy.texture = snowballOfEnemy.fullTexture;
             self.character.physicsBody.collisionBitMask = self.platformCategory | levelCategory;
-            [enemy rollSnowballInDirection: self.character.isFacingLeft];
+            [enemyNotFreezed rollSnowballInDirection: self.character.isFacingLeft];
         }
     }
     
@@ -202,6 +210,11 @@ static const uint32_t levelCategory =  0x1 << 5;
             enemy.isFacingLeft = !enemy.isFacingLeft;
             [enemy removeActionForKey:@"towardsWall"];
             [enemy rollSnowballInDirection:enemy.isFacingLeft];
+        }
+        else {
+            [enemy removeActionForKey:@"repeatedMoving"];
+            enemy.isFacingLeft = !enemy.isFacingLeft;
+            [enemy updateRepeatedMovingActions];
         }
         
     }
