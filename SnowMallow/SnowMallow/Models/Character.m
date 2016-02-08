@@ -38,6 +38,7 @@ static const uint32_t characterCategory =  0x1 << 1;
         self.size = CGSizeMake(self.texture.size.width, self.texture.size.height);
         
         self.snowBlastPower = @1;
+        self.isAlive = YES;
         
         // Set size
         self.xScale = scale;

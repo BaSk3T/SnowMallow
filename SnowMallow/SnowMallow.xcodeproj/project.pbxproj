@@ -15,6 +15,7 @@
 		BB8696D81C67AC82006726C0 /* ThrowRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB8696D41C67AC82006726C0 /* ThrowRight.atlas */; };
 		BB8696DB1C67EDC4006726C0 /* Ender.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8696DA1C67EDC4006726C0 /* Ender.m */; };
 		BB8696DD1C67F873006726C0 /* Disappear.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB8696DC1C67F873006726C0 /* Disappear.atlas */; };
+		BB8696E01C683C85006726C0 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8696DF1C683C85006726C0 /* Level.m */; };
 		BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */; };
 		BBAA2BC81C665CDF0065BDBD /* JumpRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */; };
 		BBAA2BF11C6696690065BDBD /* NormalEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAA2BF01C6696690065BDBD /* NormalEnemy.m */; };
@@ -57,6 +58,8 @@
 		BB8696D91C67EDC4006726C0 /* Ender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ender.h; sourceTree = "<group>"; };
 		BB8696DA1C67EDC4006726C0 /* Ender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ender.m; sourceTree = "<group>"; };
 		BB8696DC1C67F873006726C0 /* Disappear.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Disappear.atlas; sourceTree = "<group>"; };
+		BB8696DE1C683C85006726C0 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		BB8696DF1C683C85006726C0 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpLeft.atlas; sourceTree = "<group>"; };
 		BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpRight.atlas; sourceTree = "<group>"; };
 		BBAA2BEF1C6696690065BDBD /* NormalEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalEnemy.h; sourceTree = "<group>"; };
@@ -238,6 +241,8 @@
 				BB8696CF1C6771B5006726C0 /* Snowball.m */,
 				BB8696D91C67EDC4006726C0 /* Ender.h */,
 				BB8696DA1C67EDC4006726C0 /* Ender.m */,
+				BB8696DE1C683C85006726C0 /* Level.h */,
+				BB8696DF1C683C85006726C0 /* Level.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				BBADE06B1C651F2E005BC959 /* AppDelegate.m in Sources */,
 				BBC3D61F1C6526FC0094A7E1 /* BSJoystick.m in Sources */,
 				BB8696D01C6771B5006726C0 /* Snowball.m in Sources */,
+				BB8696E01C683C85006726C0 /* Level.m in Sources */,
 				BBADE0681C651F2E005BC959 /* main.m in Sources */,
 				BBAA2C0B1C66ADC70065BDBD /* SnowBlast.m in Sources */,
 				BBC3D6231C6540BC0094A7E1 /* Character.m in Sources */,

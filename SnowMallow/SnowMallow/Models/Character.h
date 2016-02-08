@@ -19,6 +19,7 @@
 @property BOOL isMoving;
 @property BOOL isFacingLeft;
 @property BOOL isJumping;
+@property BOOL isAlive;
 @property NSNumber *snowBlastPower;
 @property SKAction *jumpAction;
 @property SKAction *animationJumpLeftAction;
