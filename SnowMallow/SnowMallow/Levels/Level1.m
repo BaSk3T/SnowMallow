@@ -13,28 +13,57 @@
 {
     self = [super initWithSize:size];
     if (self) {
-        //self.physicsWorld.contactDelegate = self;
-        SKTexture *mediumGround = [SKTexture textureWithImageNamed:@"ground-medium.png"];
+        CGFloat halfWidth = CGRectGetMidX(self.frame);
+        CGFloat halfHeight = CGRectGetMidY(self.frame);
         
-        Platform *plat1 = [super createPlatformWithTextureNamed:@"ground" orTexture:nil andPosition:CGPointMake(0, 0)];
-        Platform *platMid = [super createPlatformWithTextureNamed:nil orTexture:mediumGround andPosition:CGPointMake(CGRectGetMidX(self.frame) - mediumGround.size.width / 2, self.frame.size.height / 3)];
-        Platform *plat2 = [super createPlatformWithTextureNamed:nil orTexture:mediumGround andPosition:CGPointMake(0, 300)];
-        Platform *plat3 = [super createPlatformWithTextureNamed:nil orTexture:mediumGround andPosition:CGPointMake(370, 200)];
+//        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"snow-mountains.png"];
+//        background.position = CGPointMake(halfWidth, halfHeight + 17);
+//        background.blendMode = SKBlendModeReplace;
+//        background.xScale *= 1.3;
         
-        NormalEnemy *normEnemy1 = [NormalEnemy normalEnemyWithPosition:CGPointMake(CGRectGetMidX(self.frame) - 100, 320) direction:NO andScale:2.5];
-        normEnemy1.physicsBody.collisionBitMask = self.platformCategory | self.levelCategory;
-        normEnemy1.physicsBody.contactTestBitMask = self.snowBlastCategory | self.levelCategory | self.enemyCategory;
+        SKTexture *smallPlatformTexture = [SKTexture textureWithImageNamed:@"ground-small"];
+        SKTexture *mediumPlatformTexture = [SKTexture textureWithImageNamed:@"ground-medium"];
         
-        NormalEnemy *normEnemy2 = [NormalEnemy normalEnemyWithPosition:CGPointMake(CGRectGetMidX(self.frame) - 300, 320) direction:YES andScale:2.5];
-        normEnemy2.physicsBody.collisionBitMask = self.platformCategory | self.levelCategory;
-        normEnemy2.physicsBody.contactTestBitMask = self.snowBlastCategory | self.levelCategory | self.enemyCategory;
+        CGFloat firstLevelOfY = 100;
+        CGFloat secondLevelOfY = 180;
+        CGFloat thirdLevelOfY = 265;
         
-        [self addChild:plat1];
-        [self addChild:platMid];
-        [self addChild:plat2];
-        [self addChild:plat3];
-        [self addChild:normEnemy1];
-        [self addChild:normEnemy2];
+        Platform *leftLowerSmallPlatform = [self createPlatformWithTextureNamed:nil orTexture:smallPlatformTexture andPosition:CGPointMake(0, firstLevelOfY)];
+
+        Platform *middleLowerSmallPlatform = [self createPlatformWithTextureNamed:nil orTexture:smallPlatformTexture andPosition:CGPointMake(halfWidth - smallPlatformTexture.size.width / 2 + 35, firstLevelOfY)];
+        
+        middleLowerSmallPlatform.xScale *= 0.5;
+        
+        Platform *rightLowerSmallPlatform = [self createPlatformWithTextureNamed:nil orTexture:smallPlatformTexture andPosition:CGPointMake(self.frame.size.width - smallPlatformTexture.size.width, firstLevelOfY)];
+        
+         Platform *middleMiddleMediumPlatform = [self createPlatformWithTextureNamed:nil orTexture:mediumPlatformTexture andPosition:CGPointMake(halfWidth - mediumPlatformTexture.size.width / 2, secondLevelOfY)];
+        
+         Platform *leftHigherSmallPlatform = [self createPlatformWithTextureNamed:nil orTexture:smallPlatformTexture andPosition:CGPointMake(smallPlatformTexture.size.width / 4, thirdLevelOfY)];
+        
+        Platform *rightHigherSmallPlatform = [self createPlatformWithTextureNamed:nil orTexture:smallPlatformTexture andPosition:CGPointMake(self.size.width - smallPlatformTexture.size.width / 4 - smallPlatformTexture.size.width, thirdLevelOfY)];
+        
+        NormalEnemy *enemy1 = [NormalEnemy normalEnemyWithPosition:CGPointMake(middleMiddleMediumPlatform.frame.origin.x + middleMiddleMediumPlatform.frame.size.width / 2 + 60, secondLevelOfY + 30) direction:YES andScale:2.5];
+        enemy1.physicsBody.collisionBitMask = self.platformCategory | self.levelCategory;
+        enemy1.physicsBody.contactTestBitMask = self.snowBlastCategory | self.levelCategory | self.enemyCategory;
+        
+        NormalEnemy *enemy2 = [NormalEnemy normalEnemyWithPosition:CGPointMake(rightHigherSmallPlatform.frame.origin.x, thirdLevelOfY + 30) direction:NO andScale:2.5];
+        enemy2.physicsBody.collisionBitMask = self.platformCategory | self.levelCategory;
+        enemy2.physicsBody.contactTestBitMask = self.snowBlastCategory | self.levelCategory | self.enemyCategory;
+        
+        NormalEnemy *enemy3 = [NormalEnemy normalEnemyWithPosition:CGPointMake(leftHigherSmallPlatform.frame.origin.x + smallPlatformTexture.size.width, thirdLevelOfY + 30) direction:YES andScale:2.5];
+        enemy3.physicsBody.collisionBitMask = self.platformCategory | self.levelCategory;
+        enemy3.physicsBody.contactTestBitMask = self.snowBlastCategory | self.levelCategory | self.enemyCategory;
+        
+        //[self addChild:background];
+        [self addChild:leftLowerSmallPlatform];
+        [self addChild:middleLowerSmallPlatform];
+        [self addChild:rightLowerSmallPlatform];
+        [self addChild:middleMiddleMediumPlatform];
+        [self addChild:leftHigherSmallPlatform];
+        [self addChild:rightHigherSmallPlatform];
+        [self addChild:enemy1];
+        [self addChild:enemy2];
+        [self addChild:enemy3];
     }
     return self;
 }

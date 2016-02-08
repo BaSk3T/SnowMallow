@@ -44,11 +44,11 @@ static const uint32_t levelCategory =  0x1 << 5;
         CGFloat enderHeight = 50;
         
         Ender *leftEnd = [Ender enderWithPosition:CGPointMake(0, basePlat.size.height) width:enderWidth andHeight:enderHeight];
-        leftEnd.fillColor = [UIColor redColor];
+        //leftEnd.fillColor = [UIColor redColor];
         leftEnd.physicsBody.contactTestBitMask = self.enemyCategory;
         
         Ender *rightEnd = [Ender enderWithPosition:CGPointMake(self.frame.size.width - enderWidth, basePlat.size.height) width:enderWidth andHeight:enderHeight];
-        rightEnd.fillColor = [UIColor redColor];
+        //rightEnd.fillColor = [UIColor redColor];
         rightEnd.physicsBody.contactTestBitMask = self.enemyCategory;
         
         [self addChild:leftEnd];

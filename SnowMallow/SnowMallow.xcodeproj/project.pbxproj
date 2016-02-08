@@ -16,6 +16,7 @@
 		BB8696DB1C67EDC4006726C0 /* Ender.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8696DA1C67EDC4006726C0 /* Ender.m */; };
 		BB8696DD1C67F873006726C0 /* Disappear.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB8696DC1C67F873006726C0 /* Disappear.atlas */; };
 		BB8696E01C683C85006726C0 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8696DF1C683C85006726C0 /* Level.m */; };
+		BB8696E31C684B62006726C0 /* snow-mountains.png in Resources */ = {isa = PBXBuildFile; fileRef = BB8696E21C684B62006726C0 /* snow-mountains.png */; };
 		BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */; };
 		BBAA2BC81C665CDF0065BDBD /* JumpRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */; };
 		BBAA2BF11C6696690065BDBD /* NormalEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAA2BF01C6696690065BDBD /* NormalEnemy.m */; };
@@ -60,6 +61,7 @@
 		BB8696DC1C67F873006726C0 /* Disappear.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Disappear.atlas; sourceTree = "<group>"; };
 		BB8696DE1C683C85006726C0 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		BB8696DF1C683C85006726C0 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
+		BB8696E21C684B62006726C0 /* snow-mountains.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snow-mountains.png"; sourceTree = "<group>"; };
 		BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpLeft.atlas; sourceTree = "<group>"; };
 		BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpRight.atlas; sourceTree = "<group>"; };
 		BBAA2BEF1C6696690065BDBD /* NormalEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalEnemy.h; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 				BB8696CC1C677172006726C0 /* Snowball.atlas */,
 			);
 			path = SnowballAtlases;
+			sourceTree = "<group>";
+		};
+		BB8696E11C684B62006726C0 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				BB8696E21C684B62006726C0 /* snow-mountains.png */,
+			);
+			path = Backgrounds;
 			sourceTree = "<group>";
 		};
 		BBAA2BEB1C66963C0065BDBD /* Enemies */ = {
@@ -250,6 +260,7 @@
 		BBC3D6201C6529F30094A7E1 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				BB8696E11C684B62006726C0 /* Backgrounds */,
 				BBC3D6351C65709A0094A7E1 /* Ground */,
 			);
 			path = Sprites;
@@ -374,6 +385,7 @@
 				BBAA2C061C66ADA30065BDBD /* BigBlast.atlas in Resources */,
 				BBAA2BFD1C669AA30065BDBD /* NE-RollLeft.atlas in Resources */,
 				BB8696DD1C67F873006726C0 /* Disappear.atlas in Resources */,
+				BB8696E31C684B62006726C0 /* snow-mountains.png in Resources */,
 				BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */,
 				BBAA2C0F1C66B65F0065BDBD /* Explosion.atlas in Resources */,
 				BB8696CD1C677172006726C0 /* Snowball.atlas in Resources */,
