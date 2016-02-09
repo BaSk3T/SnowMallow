@@ -51,6 +51,7 @@
 		BBC3D6461C657E130094A7E1 /* ground-small.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC3D6431C657E130094A7E1 /* ground-small.png */; };
 		BBC3D6471C657E130094A7E1 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC3D6441C657E130094A7E1 /* ground.png */; };
 		BBEB9AB21C6521C500D0FA3E /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEB9AB11C6521C500D0FA3E /* SpriteKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		BBFAAD161C6A938200616CCF /* Level2.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFAAD151C6A938200616CCF /* Level2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,8 @@
 		BBC3D6431C657E130094A7E1 /* ground-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ground-small.png"; sourceTree = "<group>"; };
 		BBC3D6441C657E130094A7E1 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 		BBEB9AB11C6521C500D0FA3E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		BBFAAD141C6A938200616CCF /* Level2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level2.h; sourceTree = "<group>"; };
+		BBFAAD151C6A938200616CCF /* Level2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +248,8 @@
 			children = (
 				BBC3D6191C65254B0094A7E1 /* Level1.h */,
 				BBC3D61A1C65254B0094A7E1 /* Level1.m */,
+				BBFAAD141C6A938200616CCF /* Level2.h */,
+				BBFAAD151C6A938200616CCF /* Level2.m */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 			files = (
 				BBC3D61B1C65254B0094A7E1 /* Level1.m in Sources */,
 				BBADE06E1C651F2E005BC959 /* ViewController.m in Sources */,
+				BBFAAD161C6A938200616CCF /* Level2.m in Sources */,
 				BBC3D63D1C6570D50094A7E1 /* Platform.m in Sources */,
 				BBADE06B1C651F2E005BC959 /* AppDelegate.m in Sources */,
 				BBC3D61F1C6526FC0094A7E1 /* BSJoystick.m in Sources */,

@@ -36,7 +36,7 @@ static const uint32_t levelCategory =  0x1 << 5;
     
     if (self.character.isAlive) {
         SnowBlast *snowBlast = [SnowBlast snowBlastWithPosition:CGPointMake(self.character.position.x, self.character.position.y) andPower:self.character.snowBlastPower];
-        snowBlast.physicsBody.collisionBitMask = self.platformCategory | levelCategory | self.enemyCategory;
+        snowBlast.physicsBody.collisionBitMask = levelCategory | self.enemyCategory;
         snowBlast.physicsBody.contactTestBitMask = self.enemyCategory;
         
         [self.character throwSnowBlast];
@@ -93,27 +93,13 @@ static const uint32_t levelCategory =  0x1 << 5;
 
 -(void)didBeginContact:(SKPhysicsContact *)contact {
     
-    if (contact.bodyB.categoryBitMask == self.enemyCategory
-        && contact.bodyA.categoryBitMask == self.characterCategory) {
+    if (contact.bodyB.categoryBitMask == self.enemyCategory && contact.bodyA.categoryBitMask == self.characterCategory) {
         NormalEnemy *enemy = (NormalEnemy*)contact.bodyB.node;
-        
-        Snowball *snowballOfEnemy = (Snowball*)[enemy childNodeWithName:@"snowball"];
-        
-        if (enemy.isFreezed && !enemy.isPushed && snowballOfEnemy.levelOfFreeze == 4) {
-            enemy.isPushed = YES;
-            [snowballOfEnemy removeAllActions];
-            snowballOfEnemy.texture = snowballOfEnemy.fullTexture;
-            self.character.physicsBody.collisionBitMask = self.platformCategory | levelCategory;
-            [enemy rollSnowballInDirection: self.character.isFacingLeft];
-        }
-        
-        if (!enemy.isFreezed && !enemy.isPushed) {
-            self.character.isAlive = NO;
-            [self.character runAction:self.character.animationDestroyedAction completion:^{
-                [self removeEverythingFromLevel];
-                [self addStartButton];
-            }];
-        }
+        [self checkCollisionBetweenCharacterAndEnemy:enemy];
+    }
+    else if (contact.bodyB.categoryBitMask == self.characterCategory && contact.bodyA.categoryBitMask == self.enemyCategory) {
+        NormalEnemy *enemy = (NormalEnemy*)contact.bodyA.node;
+        [self checkCollisionBetweenCharacterAndEnemy:enemy];
     }
     
     if (contact.bodyA.categoryBitMask == self.enderCategory
@@ -127,8 +113,7 @@ static const uint32_t levelCategory =  0x1 << 5;
             
             [self runAction:[SKAction waitForDuration:(NSTimeInterval)1] completion:^{
                 if (![self childNodeWithName:@"enemy"]) {
-                    [self removeEverythingFromLevel];
-                    [self addStartButton];
+                    [self prepareForNextLevel];
                 }
             }];
         }
@@ -189,24 +174,15 @@ static const uint32_t levelCategory =  0x1 << 5;
         SnowBlast *snowBlast = (SnowBlast*)contact.bodyB.node;
         NormalEnemy *enemy = (NormalEnemy*)contact.bodyA.node;
         
-        [enemy wasHit];
-        [snowBlast runAction:snowBlast.animationExplodeAction completion:^{
-            [snowBlast removeFromParent];
-        }];
+        [self checkForCollisionBetweenSnowBlast:snowBlast andEnemy:enemy];
+    }
+    else if (contact.bodyA.categoryBitMask == self.snowBlastCategory
+             && contact.bodyB.categoryBitMask == self.enemyCategory) {
         
-        Snowball *snowballOfEnemy = (Snowball*)[enemy childNodeWithName:@"snowball"];
+        SnowBlast *snowBlast = (SnowBlast*)contact.bodyA.node;
+        NormalEnemy *enemy = (NormalEnemy*)contact.bodyB.node;
         
-        if (snowballOfEnemy) {
-            if (snowballOfEnemy.levelOfFreeze == 4) {
-                return;
-            }
-            
-            [snowballOfEnemy updateLevelOfFreezeWithIncrease:YES];
-        }
-        else {
-            Snowball *snowball = [Snowball snowballWithPosition:CGPointMake(0, 0) enemy:enemy andScale:1.3];
-            [enemy addChild:snowball];
-        }
+        [self checkForCollisionBetweenSnowBlast:snowBlast andEnemy:enemy];
     }
 }
 
@@ -257,10 +233,55 @@ static const uint32_t levelCategory =  0x1 << 5;
     [self addChild:basePlat];
 }
 
-- (void) removeEverythingFromLevel {
-    
+- (void) prepareForNextLevel {
+    [self removeEverythingFromParent];
+    [self removeFromParent];
+}
+
+- (void) removeEverythingFromParent {
     [self removeAllChildren];
     [self removeAllActions];
+}
+
+- (void) checkCollisionBetweenCharacterAndEnemy:(NormalEnemy*)enemy {
+    Snowball *snowballOfEnemy = (Snowball*)[enemy childNodeWithName:@"snowball"];
+    
+    if (enemy.isFreezed && !enemy.isPushed && snowballOfEnemy.levelOfFreeze == 4) {
+        enemy.isPushed = YES;
+        [snowballOfEnemy removeAllActions];
+        snowballOfEnemy.texture = snowballOfEnemy.fullTexture;
+        self.character.physicsBody.collisionBitMask = self.platformCategory | levelCategory;
+        [enemy rollSnowballInDirection: self.character.isFacingLeft];
+    }
+    
+    if (!enemy.isFreezed && !enemy.isPushed) {
+        self.character.isAlive = NO;
+        [self.character runAction:self.character.animationDestroyedAction completion:^{
+            [self removeEverythingFromParent];
+            [self addStartButton];
+        }];
+    }
+}
+
+- (void) checkForCollisionBetweenSnowBlast:(SnowBlast*)snowBlast andEnemy:(NormalEnemy*)enemy {
+    [enemy wasHit];
+    [snowBlast runAction:snowBlast.animationExplodeAction completion:^{
+        [snowBlast removeFromParent];
+    }];
+    
+    Snowball *snowballOfEnemy = (Snowball*)[enemy childNodeWithName:@"snowball"];
+    
+    if (snowballOfEnemy) {
+        if (snowballOfEnemy.levelOfFreeze == 4) {
+            return;
+        }
+        
+        [snowballOfEnemy updateLevelOfFreezeWithIncrease:YES];
+    }
+    else {
+        Snowball *snowball = [Snowball snowballWithPosition:CGPointMake(0, 0) enemy:enemy andScale:1.3];
+        [enemy addChild:snowball];
+    }
 }
 
 - (void) addStartButton {

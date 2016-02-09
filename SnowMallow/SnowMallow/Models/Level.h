@@ -21,6 +21,8 @@
 -(void)update:(NSTimeInterval)currentTime;
 -(void) initializeLevel;
 -(void) addStartButton;
+-(void) switchToNextLevel;
+- (void) prepareForNextLevel;
 @property BSJoystick *joystick;
 @property Character *character;
 @property uint32_t platformCategory;

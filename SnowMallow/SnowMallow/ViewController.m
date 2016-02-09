@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <SpriteKit/SpriteKit.h>
 #import "Level1.h"
+#import "Level2.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 

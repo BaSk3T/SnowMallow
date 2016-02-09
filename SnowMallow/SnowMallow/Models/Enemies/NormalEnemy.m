@@ -124,13 +124,9 @@ static const uint32_t enemyCategory =  0x1 << 2;
     
     if (isFacingLeft) {
         repeatMove = [SKAction repeatActionForever:self.pushedLeftAction];
-        //[self runAction:self.pushedLeftAction];
-        //[self.physicsBody applyImpulse:CGVectorMake(-150.0, 0)];
     }
     else {
         repeatMove = [SKAction repeatActionForever:self.pushedRightAction];
-        //[self runAction:self.pushedRightAction];
-        //[self.physicsBody applyImpulse:CGVectorMake(150.0, 0)];
     }
     
     [self runAction:repeatMove withKey:@"towardsWall"];

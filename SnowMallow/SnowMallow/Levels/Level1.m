@@ -7,6 +7,7 @@
 //
 
 #import "Level1.h"
+#import "Level2.h"
 
 @implementation Level1
 - (instancetype)initWithSize:(CGSize)size
@@ -16,6 +17,17 @@
         [self addStartButton];
     }
     return self;
+}
+
+- (void)prepareForNextLevel {
+    [super prepareForNextLevel];
+    NSLog(@"asd");
+    [self switchToNextLevel];
+}
+
+-(void)switchToNextLevel {
+    Level2 *nextLevel = [[Level2 alloc] initWithSize:self.size];
+    [self.view presentScene:nextLevel transition:[SKTransition fadeWithColor:[UIColor whiteColor] duration:2.0]];
 }
 
 -(void)initializeLevel {
@@ -52,7 +64,7 @@
     
     NormalEnemy *enemy1 = [NormalEnemy normalEnemyWithPosition:CGPointMake(middleMiddleMediumPlatform.frame.origin.x + middleMiddleMediumPlatform.frame.size.width / 2 + 60, secondLevelOfY + 30) direction:YES andScale:2.5];
     enemy1.physicsBody.collisionBitMask = self.platformCategory | self.levelCategory;
-    enemy1.physicsBody.contactTestBitMask = self.snowBlastCategory | self.levelCategory | self.enemyCategory;
+    enemy1.physicsBody.contactTestBitMask = self.levelCategory | self.enemyCategory;
     
     NormalEnemy *enemy2 = [NormalEnemy normalEnemyWithPosition:CGPointMake(rightHigherSmallPlatform.frame.origin.x, thirdLevelOfY + 30) direction:NO andScale:2.5];
     enemy2.physicsBody.collisionBitMask = self.platformCategory | self.levelCategory;
@@ -60,7 +72,7 @@
     
     NormalEnemy *enemy3 = [NormalEnemy normalEnemyWithPosition:CGPointMake(leftHigherSmallPlatform.frame.origin.x + smallPlatformTexture.size.width, thirdLevelOfY + 30) direction:YES andScale:2.5];
     enemy3.physicsBody.collisionBitMask = self.platformCategory | self.levelCategory;
-    enemy3.physicsBody.contactTestBitMask = self.snowBlastCategory | self.levelCategory | self.enemyCategory;
+    enemy3.physicsBody.contactTestBitMask = self.levelCategory | self.enemyCategory;
     
     //        [self addChild:background];
     [self addChild:leftLowerSmallPlatform];
