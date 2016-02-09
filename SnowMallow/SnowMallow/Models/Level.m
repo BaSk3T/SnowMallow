@@ -124,6 +124,13 @@ static const uint32_t levelCategory =  0x1 << 5;
             self.character.physicsBody.collisionBitMask = self.platformCategory | levelCategory | self.snowballCategory;
             [enemy removeActionForKey:@"towardsWall"];
             [enemy wasDestroyed];
+            
+            [self runAction:[SKAction waitForDuration:(NSTimeInterval)1] completion:^{
+                if (![self childNodeWithName:@"enemy"]) {
+                    [self removeEverythingFromLevel];
+                    [self addStartButton];
+                }
+            }];
         }
     }
     
