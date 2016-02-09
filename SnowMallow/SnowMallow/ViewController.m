@@ -9,9 +9,11 @@
 #import "ViewController.h"
 #import <SpriteKit/SpriteKit.h>
 #import "Level1.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ViewController ()
-
+@property(nonatomic, strong) AVAudioPlayer *backgroundMusic;
 @end
 
 @implementation ViewController
@@ -30,6 +32,12 @@
     spriteView.showsDrawCount = YES;
     spriteView.showsNodeCount = YES;
     spriteView.showsFPS = YES;
+    
+    NSURL* musicFile = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"theme-music" ofType:@"mp3"]];
+    self.backgroundMusic  = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile  error:nil];
+    self.backgroundMusic.numberOfLoops = -1;
+    [self.backgroundMusic play];
+    
     [spriteView presentScene:scene];
 
 }

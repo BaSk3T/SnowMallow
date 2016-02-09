@@ -28,35 +28,6 @@ static const uint32_t levelCategory =  0x1 << 5;
         self.physicsWorld.contactDelegate = self;
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsBody.categoryBitMask = levelCategory;
-        
-        self.joystick = [BSJoystick joystickWithJoystickSize:80 stickSize:40 joystickColor:[UIColor colorWithRed:0 green:0 blue:1.0 alpha:0.5] andStickColor:[UIColor redColor]];
-        self.joystick.position = CGPointMake(self.frame.size.width / 9 - 50, self.frame.size.height / 4 - 50);
-        self.joystick.zPosition = 10;
-        
-        self.character = [Character characterWithPosition:CGPointMake(self.frame.size.width / 2 - 140, 200 + 20) andScale:2];
-        self.character.physicsBody.collisionBitMask = self.platformCategory | levelCategory | self.snowballCategory;
-        self.character.physicsBody.contactTestBitMask = self.enemyCategory;
-        self.character.zPosition = 1;
-        
-        Platform *basePlat = [self createPlatformWithTextureNamed:@"ground" orTexture:nil andPosition:CGPointMake(0, 0)];
-        
-        CGFloat enderWidth = 5;
-        CGFloat enderHeight = 50;
-        
-        Ender *leftEnd = [Ender enderWithPosition:CGPointMake(0, basePlat.size.height) width:enderWidth andHeight:enderHeight];
-        //leftEnd.fillColor = [UIColor redColor];
-        leftEnd.physicsBody.contactTestBitMask = self.enemyCategory;
-        
-        Ender *rightEnd = [Ender enderWithPosition:CGPointMake(self.frame.size.width - enderWidth, basePlat.size.height) width:enderWidth andHeight:enderHeight];
-        //rightEnd.fillColor = [UIColor redColor];
-        rightEnd.physicsBody.contactTestBitMask = self.enemyCategory;
-        
-        [self addChild:leftEnd];
-        [self addChild:rightEnd];
-        
-        [self addChild:self.joystick];
-        [self addChild:self.character];
-        [self addChild:basePlat];
     }
     return self;
 }
@@ -73,6 +44,18 @@ static const uint32_t levelCategory =  0x1 << 5;
         [self addChild:snowBlast];
         
         [snowBlast moveInDirection:self.character.isFacingLeft];
+    }
+    
+    if ([self childNodeWithName:@"start-game-button"]) {
+        for (UITouch *touch in touches) {
+            CGPoint location = [touch locationInNode:self];
+            SKNode *node = [self nodeAtPoint:location];
+            
+            if ([node.name isEqualToString:@"start-game-button"]) {
+                [node removeFromParent];
+                [self initializeLevel];
+            }
+        }
     }
 }
 
@@ -126,7 +109,10 @@ static const uint32_t levelCategory =  0x1 << 5;
         
         if (!enemy.isFreezed && !enemy.isPushed) {
             self.character.isAlive = NO;
-            [self.character removeFromParent];
+            [self.character runAction:self.character.animationDestroyedAction completion:^{
+                [self removeEverythingFromLevel];
+                [self addStartButton];
+            }];
         }
     }
     
@@ -230,5 +216,52 @@ static const uint32_t levelCategory =  0x1 << 5;
     platform.physicsBody.collisionBitMask = self.characterCategory | self.enemyCategory;
     
     return  platform;
+}
+
+
+-(void) initializeLevel {
+    self.joystick = [BSJoystick joystickWithJoystickSize:80 stickSize:40 joystickColor:[UIColor colorWithRed:0 green:0 blue:1.0 alpha:0.5] andStickColor:[UIColor redColor]];
+    self.joystick.position = CGPointMake(self.frame.size.width / 9 - 50, self.frame.size.height / 4 - 50);
+    self.joystick.zPosition = 10;
+    
+    Platform *basePlat = [self createPlatformWithTextureNamed:@"ground" orTexture:nil andPosition:CGPointMake(0, 0)];
+    
+    self.character = [Character characterWithPosition:CGPointMake(self.frame.size.width / 2, basePlat.size.height + 10) andScale:2];
+    self.character.physicsBody.collisionBitMask = self.platformCategory | levelCategory | self.snowballCategory;
+    self.character.physicsBody.contactTestBitMask = self.enemyCategory;
+    self.character.zPosition = 3;
+    
+    CGFloat enderWidth = 5;
+    CGFloat enderHeight = 50;
+    
+    Ender *leftEnd = [Ender enderWithPosition:CGPointMake(0, basePlat.size.height) width:enderWidth andHeight:enderHeight];
+    //leftEnd.fillColor = [UIColor redColor];
+    leftEnd.physicsBody.contactTestBitMask = self.enemyCategory;
+    
+    Ender *rightEnd = [Ender enderWithPosition:CGPointMake(self.frame.size.width - enderWidth, basePlat.size.height) width:enderWidth andHeight:enderHeight];
+    //rightEnd.fillColor = [UIColor redColor];
+    rightEnd.physicsBody.contactTestBitMask = self.enemyCategory;
+    
+    [self addChild:leftEnd];
+    [self addChild:rightEnd];
+    
+    [self addChild:self.joystick];
+    [self addChild:self.character];
+    [self addChild:basePlat];
+}
+
+- (void) removeEverythingFromLevel {
+    
+    [self removeAllChildren];
+    [self removeAllActions];
+}
+
+- (void) addStartButton {
+    SKSpriteNode *button = [SKSpriteNode spriteNodeWithImageNamed:@"start-button.png"];
+    button.name = @"start-game-button";
+    button.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    button.zPosition = 10;
+    
+    [self addChild:button];
 }
 @end

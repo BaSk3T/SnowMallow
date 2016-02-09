@@ -19,6 +19,8 @@
 -(Platform*) createPlatformWithTextureNamed:(NSString*) textureName orTexture:(SKTexture*) texture andPosition:(CGPoint) position;
 -(void)didBeginContact:(SKPhysicsContact *)contact;
 -(void)update:(NSTimeInterval)currentTime;
+-(void) initializeLevel;
+-(void) addStartButton;
 @property BSJoystick *joystick;
 @property Character *character;
 @property uint32_t platformCategory;

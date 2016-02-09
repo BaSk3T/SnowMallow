@@ -18,6 +18,7 @@
 @property NSArray *pushRightTextures;
 @property NSArray *throwLeftTextures;
 @property NSArray *throwRightTextures;
+@property NSArray *destroyedTextures;
 @end
 
 @implementation Character
@@ -69,6 +70,13 @@ static const uint32_t characterCategory =  0x1 << 1;
     self.moveLeftAction = [SKAction moveByX:-self.size.width / 6 y:0 duration:0.1];
     self.moveRightAction = [SKAction moveByX:self.size.width / 6 y:0 duration:0.1];
     self.jumpAction = [SKAction moveByX:0 y:200 duration:0.5];
+    
+    SKAction *scale = [SKAction scaleBy:-0.1 duration:0.45];
+    SKAction *rotate = [SKAction rotateByAngle:360 duration:0.45];
+    
+    SKAction *destroyed = [SKAction animateWithTextures:self.destroyedTextures timePerFrame:0.15];
+    
+    self.animationDestroyedAction = [SKAction group:@[scale, rotate, destroyed]];
 }
 
 // Returns all the textures for given atlas into NSMutableArray
@@ -107,6 +115,7 @@ static const uint32_t characterCategory =  0x1 << 1;
     self.throwRightTextures = [self loadTexturesWithAtlasName:@"ThrowRight" andImagePrefix:@"throw-right"];
     self.pushLeftTextures = [self loadTexturesWithAtlasName:@"PushLeft" andImagePrefix:@"push-left"];
     self.pushRightTextures = [self loadTexturesWithAtlasName:@"PushRight" andImagePrefix:@"push-right"];
+    self.destroyedTextures = [self loadTexturesWithAtlasName:@"Destroyed" andImagePrefix:@"destroyed"];
 }
 
 -(void) jump {

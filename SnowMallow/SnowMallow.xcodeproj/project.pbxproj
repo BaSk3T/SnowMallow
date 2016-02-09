@@ -16,7 +16,6 @@
 		BB8696DB1C67EDC4006726C0 /* Ender.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8696DA1C67EDC4006726C0 /* Ender.m */; };
 		BB8696DD1C67F873006726C0 /* Disappear.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BB8696DC1C67F873006726C0 /* Disappear.atlas */; };
 		BB8696E01C683C85006726C0 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8696DF1C683C85006726C0 /* Level.m */; };
-		BB8696E31C684B62006726C0 /* snow-mountains.png in Resources */ = {isa = PBXBuildFile; fileRef = BB8696E21C684B62006726C0 /* snow-mountains.png */; };
 		BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */; };
 		BBAA2BC81C665CDF0065BDBD /* JumpRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */; };
 		BBAA2BF11C6696690065BDBD /* NormalEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAA2BF01C6696690065BDBD /* NormalEnemy.m */; };
@@ -35,6 +34,12 @@
 		BBADE0711C651F2E005BC959 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBADE06F1C651F2E005BC959 /* Main.storyboard */; };
 		BBADE0731C651F2E005BC959 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBADE0721C651F2E005BC959 /* Assets.xcassets */; };
 		BBADE0761C651F2E005BC959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBADE0741C651F2E005BC959 /* LaunchScreen.storyboard */; };
+		BBB048A91C69E9600030E6B1 /* b-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB048A81C69E9600030E6B1 /* b-1.jpg */; };
+		BBB048AB1C69ECC90030E6B1 /* Destroyed.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBB048AA1C69ECC90030E6B1 /* Destroyed.atlas */; };
+		BBB048AF1C6A02D00030E6B1 /* Buttons.atlas in Resources */ = {isa = PBXBuildFile; fileRef = BBB048AE1C6A02D00030E6B1 /* Buttons.atlas */; };
+		BBB048B11C6A09DE0030E6B1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBB048B01C6A09DE0030E6B1 /* AVFoundation.framework */; };
+		BBB048B31C6A09EB0030E6B1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBB048B21C6A09EB0030E6B1 /* AudioToolbox.framework */; };
+		BBB048B61C6A0B460030E6B1 /* theme-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BBB048B51C6A0B460030E6B1 /* theme-music.mp3 */; };
 		BBC3D61B1C65254B0094A7E1 /* Level1.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D61A1C65254B0094A7E1 /* Level1.m */; };
 		BBC3D61F1C6526FC0094A7E1 /* BSJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D61E1C6526FC0094A7E1 /* BSJoystick.m */; };
 		BBC3D6231C6540BC0094A7E1 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D6221C6540BC0094A7E1 /* Character.m */; };
@@ -61,7 +66,6 @@
 		BB8696DC1C67F873006726C0 /* Disappear.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Disappear.atlas; sourceTree = "<group>"; };
 		BB8696DE1C683C85006726C0 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		BB8696DF1C683C85006726C0 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
-		BB8696E21C684B62006726C0 /* snow-mountains.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snow-mountains.png"; sourceTree = "<group>"; };
 		BBAA2BC51C665CDF0065BDBD /* JumpLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpLeft.atlas; sourceTree = "<group>"; };
 		BBAA2BC61C665CDF0065BDBD /* JumpRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpRight.atlas; sourceTree = "<group>"; };
 		BBAA2BEF1C6696690065BDBD /* NormalEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalEnemy.h; sourceTree = "<group>"; };
@@ -87,6 +91,12 @@
 		BBADE0721C651F2E005BC959 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBADE0751C651F2E005BC959 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBADE0771C651F2E005BC959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBB048A81C69E9600030E6B1 /* b-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "b-1.jpg"; sourceTree = "<group>"; };
+		BBB048AA1C69ECC90030E6B1 /* Destroyed.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Destroyed.atlas; sourceTree = "<group>"; };
+		BBB048AE1C6A02D00030E6B1 /* Buttons.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Buttons.atlas; sourceTree = "<group>"; };
+		BBB048B01C6A09DE0030E6B1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BBB048B21C6A09EB0030E6B1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		BBB048B51C6A0B460030E6B1 /* theme-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "theme-music.mp3"; sourceTree = "<group>"; };
 		BBC3D6191C65254B0094A7E1 /* Level1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1.h; sourceTree = "<group>"; };
 		BBC3D61A1C65254B0094A7E1 /* Level1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1.m; sourceTree = "<group>"; };
 		BBC3D61D1C6526FC0094A7E1 /* BSJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSJoystick.h; sourceTree = "<group>"; };
@@ -109,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBB048B31C6A09EB0030E6B1 /* AudioToolbox.framework in Frameworks */,
+				BBB048B11C6A09DE0030E6B1 /* AVFoundation.framework in Frameworks */,
 				BBEB9AB21C6521C500D0FA3E /* SpriteKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,7 +139,7 @@
 		BB8696E11C684B62006726C0 /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
-				BB8696E21C684B62006726C0 /* snow-mountains.png */,
+				BBB048A81C69E9600030E6B1 /* b-1.jpg */,
 			);
 			path = Backgrounds;
 			sourceTree = "<group>";
@@ -183,6 +195,8 @@
 		BBADE05A1C651F2E005BC959 = {
 			isa = PBXGroup;
 			children = (
+				BBB048B21C6A09EB0030E6B1 /* AudioToolbox.framework */,
+				BBB048B01C6A09DE0030E6B1 /* AVFoundation.framework */,
 				BBEB9AB11C6521C500D0FA3E /* SpriteKit.framework */,
 				BBADE0651C651F2E005BC959 /* SnowMallow */,
 				BBADE0641C651F2E005BC959 /* Products */,
@@ -200,6 +214,7 @@
 		BBADE0651C651F2E005BC959 /* SnowMallow */ = {
 			isa = PBXGroup;
 			children = (
+				BBB048B41C6A0B460030E6B1 /* Music */,
 				BBC3D6241C6544EC0094A7E1 /* Atlases */,
 				BBC3D6201C6529F30094A7E1 /* Sprites */,
 				BBC3D61C1C6526E20094A7E1 /* Models */,
@@ -232,6 +247,14 @@
 				BBC3D61A1C65254B0094A7E1 /* Level1.m */,
 			);
 			path = Levels;
+			sourceTree = "<group>";
+		};
+		BBB048B41C6A0B460030E6B1 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				BBB048B51C6A0B460030E6B1 /* theme-music.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		BBC3D61C1C6526E20094A7E1 /* Models */ = {
@@ -269,6 +292,7 @@
 		BBC3D6241C6544EC0094A7E1 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
+				BBB048AE1C6A02D00030E6B1 /* Buttons.atlas */,
 				BB8696CB1C677172006726C0 /* SnowballAtlases */,
 				BBAA2C021C66ADA30065BDBD /* SnowBallBlastAtlases */,
 				BBAA2BF21C669AA30065BDBD /* EnemiesAtlases */,
@@ -280,6 +304,7 @@
 		BBC3D6251C6549C30094A7E1 /* CharacterAtlases */ = {
 			isa = PBXGroup;
 			children = (
+				BBB048AA1C69ECC90030E6B1 /* Destroyed.atlas */,
 				BB8696D11C67AC82006726C0 /* PushLeft.atlas */,
 				BB8696D21C67AC82006726C0 /* PushRight.atlas */,
 				BB8696D31C67AC82006726C0 /* ThrowLeft.atlas */,
@@ -370,6 +395,8 @@
 			files = (
 				BBAA2BC81C665CDF0065BDBD /* JumpRight.atlas in Resources */,
 				BBADE0761C651F2E005BC959 /* LaunchScreen.storyboard in Resources */,
+				BBB048A91C69E9600030E6B1 /* b-1.jpg in Resources */,
+				BBB048AB1C69ECC90030E6B1 /* Destroyed.atlas in Resources */,
 				BBC3D6451C657E130094A7E1 /* ground-medium.png in Resources */,
 				BBC3D62A1C6549C30094A7E1 /* Default.atlas in Resources */,
 				BBADE0731C651F2E005BC959 /* Assets.xcassets in Resources */,
@@ -385,7 +412,6 @@
 				BBAA2C061C66ADA30065BDBD /* BigBlast.atlas in Resources */,
 				BBAA2BFD1C669AA30065BDBD /* NE-RollLeft.atlas in Resources */,
 				BB8696DD1C67F873006726C0 /* Disappear.atlas in Resources */,
-				BB8696E31C684B62006726C0 /* snow-mountains.png in Resources */,
 				BBAA2BC71C665CDF0065BDBD /* JumpLeft.atlas in Resources */,
 				BBAA2C0F1C66B65F0065BDBD /* Explosion.atlas in Resources */,
 				BB8696CD1C677172006726C0 /* Snowball.atlas in Resources */,
@@ -394,6 +420,8 @@
 				BBC3D62C1C6549C30094A7E1 /* MoveLeft.atlas in Resources */,
 				BB8696D61C67AC82006726C0 /* PushRight.atlas in Resources */,
 				BBADE0711C651F2E005BC959 /* Main.storyboard in Resources */,
+				BBB048B61C6A0B460030E6B1 /* theme-music.mp3 in Resources */,
+				BBB048AF1C6A02D00030E6B1 /* Buttons.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

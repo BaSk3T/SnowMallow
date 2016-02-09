@@ -30,6 +30,7 @@
 @property SKAction *animationThrowRightAction;
 @property SKAction *animationMoveLeftAction;
 @property SKAction *animationMoveRightAction;
+@property SKAction *animationDestroyedAction;
 @property SKAction *moveLeftAction;
 @property SKAction *moveRightAction;
 @property SKTexture *defaultLeftTexture;
